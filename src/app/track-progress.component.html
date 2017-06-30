@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="newday" (click)="addNewDay()"> + Add a new day + </div>
+
+  <div class="days">
+    <div *ngFor="let day of days; let i = index" class="day">
+      <h5> {{day.id}} / {{day.date}} </h5>
+
+      <div *ngFor="let exercise of exercises" class="addedExercises">
+         dddddddddddddddddddddddddddddddddd {{exercise.id}} / {{exercise.name}} 
+      </div>
+
+      <div class="menuContainer">
+        <div class="newExercise" (click)="toggleMenu(i)">
+          <h4>+ Add new exercise +</h4>
+        </div>
+
+        <div class="dropdown-menu">
+          <div class="bodypart" (click)="toggleMenu2(i)"> Arms >
+          </div>
+          <div class="bodypart" (click)="toggleMenu3(i)"> Shoulders >
+          </div>
+          <div class="bodypart" (click)="toggleMenu4(i)"> Chest >
+          </div>
+          <div class="bodypart" (click)="toggleMenu5(i)"> Back >
+          </div>
+          <div class="bodypart" (click)="toggleMenu6(i)"> Core >
+          </div>
+          <div class="bodypart" (click)="toggleMenu7(i)"> Lower Body >
+          </div>
+        </div>
+
+        <div class="submenu-arms">
+          <div class="exercise" (click)="addNewExercise()"> asda12 </div>
+          <div class="exercise" (click)="addNewExercise()"> asda12 </div>
+          <div class="exercise" (click)="addNewExercise()"> asda12 </div>
+          <div class="exercise" (click)="addNewExercise()"> asda12 </div>
+          <div class="exercise" (click)="addNewExercise()"> asda12 </div>
+          <div class="exercise" (click)="addNewExercise()"> asda12 </div>
+          <div class="exercise" (click)="addNewExercise()"> asda12 </div>
+        </div>
+
+        <div class="submenu-shoulders">
+          <div class="exercise"> asda1223 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+        </div>
+
+        <div class="submenu-chest">
+          <div class="exercise"> asda123245 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+        </div>
+
+        <div class="submenu-back">
+          <div class="exercise"> asda1234523452 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+        </div>
+
+        <div class="submenu-core">
+          <div class="exercise"> asda12344222 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+        </div>
+
+        <div class="submenu-lowerbody">
+          <div class="exercise"> asda1555555552 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+          <div class="exercise"> asda12 </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

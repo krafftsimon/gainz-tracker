@@ -1,0 +1,43 @@
+.box {
+  background-color: #F7B733;
+  display: inline-block;
+  width: 250px;
+  height: 170px;
+  margin: 250px 10px 10px 10px;
+  padding: 20px;
+  border-radius: 8%;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  vertical-align: middle;
+  line-height: 150px;
+  font-size: 30px;
+}
+
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 10px;
+  clear: both;
+}
+
+.box:hover {
+  background-color: #ff9000;
+}
+
+.box:active {
+  background-color: white;
+  border: 5px solid #ff9000;
+  padding: 15px;
+}
+
+.body {
+  width: 1100px;
+  height: 260px;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}

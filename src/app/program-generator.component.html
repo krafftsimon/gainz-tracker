@@ -1,0 +1,16 @@
+<div class="container">
+  <p> Select a program. </p>
+  
+  <ul class="programs">
+    <li *ngFor="let program of programs" (click)="onSelect(program)" [class.selected]="program === selectedProgram">
+      <span class="badge">{{program.id}}</span> {{program.name}}
+    </li>
+  </ul>
+  <div *ngIf="selectedProgram">
+    <ol>
+      <li>{{selectedProgram.name}}</li>
+      <li>{{selectedProgram.id}}</li>
+      <li>{{selectedProgram.description}}</li>
+    </ol>
+  </div>
+<div>

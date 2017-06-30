@@ -1,0 +1,28 @@
+.header {
+  background-color: #FC4A1A;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 10px;
+  clear: both;
+}
+
+
+h1 {
+  cursor: pointer;
+}
+
+h1:hover {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
