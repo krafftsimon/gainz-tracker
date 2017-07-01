@@ -1,9 +1,13 @@
 <div class="header">
   <div class="container">
     <h1 class="pull-left" [routerLink]="['/home']">Gainz Tracker</h1>
-    <h1 class="pull-right">Login</h1>
+    <div class="pull-right" id="login">Login</div>
     <div style="clear: both;"></div>
   </div>
 </div>
 
-<router-outlet></router-outlet>
+<div class="background">
+  <div class="router">
+    <router-outlet></router-outlet>
+  </div>
+</div>

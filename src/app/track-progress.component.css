@@ -1,7 +1,7 @@
 .container {
-  max-width: 960px;
+  max-width: 1800px;
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 10px 10px;
   clear: both;
 }
 
@@ -10,14 +10,15 @@
   padding: 10px;
   width: 600px;
   height: 40px;
-  background-color: #F7B733;
-  border-radius: 15px;
+  background-color: #61892f;
+  border-radius: 10px;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
   vertical-align: middle;
   line-height: 35px;
   font-size: 30px;
 }
+
 .days {
 }
 
@@ -26,34 +27,41 @@
   padding: 10px;
   width: 600px;
   min-height: 60px;
-  background-color: #F7B733;
-  border-radius: 15px;
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+  background-color: #222629;
+  border-radius: 10px;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
   line-height: 10px;
   font-size: 20px;
+  border: 2px solid black;
 }
 
 
 h5 {
   margin: 5px;
+  position: absolute;
+}
+
+h3 {
+  margin: 5px;
+  position: absolute;
+  color: white;
 }
 
 h4 {
   margin: 1px 5px;
   position: absolute;
   text-align: center;
-    line-height: 18px;
+  line-height: 18px;
 }
 .newExercise {
   margin: 15px 5px 5px 5px;
   padding: 5px;
   width: 200px;
   height: 18px;
-  background-color: #FC4A1A;
-  border-radius: 15px;
+  background-color: #86c232;
+  border-radius: 8px;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-  font-size: 20px;
-  z-index: 1;
+  position: relative;
 }
 
 .newExercise:hover {
@@ -80,8 +88,8 @@ h4 {
 
 .dropdown-menu {
   display: none;
-  background-color: #ff5c30;
-  border-radius: 15px;
+  background-color: #86c232;
+  border-radius: 8px;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
   z-index: 10;
   position: relative;
@@ -93,8 +101,8 @@ h4 {
 
 .submenu-arms, .submenu-shoulders, .submenu-chest, .submenu-back, .submenu-core, .submenu-lowerbody {
   display: none;
-  background-color: #ff5c30;
-  border-radius: 15px;
+  background-color: #86c232;
+  border-radius: 8px;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
   z-index: 10;
   position: relative;
@@ -104,7 +112,6 @@ h4 {
   width: 205px;
   margin: 0 0 10px 8px;
   text-align: center;
-  top: -20px;
 }
 
 .openMenu, .openSubMenu {
@@ -114,6 +121,18 @@ h4 {
 
 .bodypart{
   padding: 10px;
+}
+
+.bodypart:hover {
+  border: 3px solid #000000;
+  border-radius: 15px;
+  padding: 7px;
+}
+
+.bodypart:active {
+  background-color: #ffffff;
+  border: 3px solid #000000;
+  padding: 7px;
 }
 
 .exercise{
@@ -132,28 +151,24 @@ h4 {
   padding: 7px;
 }
 
-.bodypart:hover {
-  border: 3px solid #000000;
-  border-radius: 15px;
-  padding: 7px;
-}
-
-.bodypart:active {
-  background-color: #ffffff;
-  border: 3px solid #000000;
-  padding: 7px;
-}
 .menuContainer {
-
 }
-.active {
+
+.menuActive {
   background-color: white;
   border: 3px solid #000000;
   padding: 2px;
 }
 
+.subMenuActive {
+  background-color: white;
+  border: 3px solid #000000;
+  padding: 7px;
+  border-radius: 15px;
+}
+
 .addedExercises {
-  background-color: #FC4A1A;
+  background-color: #61892f;
   border-radius: 10px;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
   margin: 15px 5px 5px 5px;

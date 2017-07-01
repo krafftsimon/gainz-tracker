@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef } from '@angular/core';
+import { Component, Input, ElementRef, HostListener } from '@angular/core';
 
 import { DropdownModule } from 'ngx-dropdown';
 
@@ -10,117 +10,114 @@ import { Exercise } from './exercise';
 @Component({
   selector: 'track-progress-page',
   templateUrl: './track-progress.component.html',
-  styleUrls: ['./track-progress.component.css']
+  styleUrls: ['./track-progress.component.css'],
 })
 export class TrackProgressComponent {
   @Input() index: number;
   totalNumDays: number = 1;
   days: Day[] = DAYS;
-  exercises: Exercise[] = [{id: 3, name: "bench"}];
+
+  constructor(private eref: ElementRef) {}
+
+  @HostListener('document:click', ['$event'])
+  onClick(event) {
+    let test = document.getElementsByClassName('bodypart');
+    let targ = event.target.attributes.class.nodeValue;
+    let openedMenus = document.getElementsByClassName("openMenu");
+    let openedSubMenus = document.getElementsByClassName("openSubMenu");
+    if (openedMenus.length > 0 && targ !== "bodypart" && targ !== "newExercise menuActive" && targ !== "bodypart subMenuActive" && targ !== "newExercise"){
+
+      document.getElementsByClassName('openMenu')[0].classList.remove('openMenu');
+      document.getElementsByClassName('menuActive')[0].classList.remove('menuActive');
+      if (openedSubMenus.length > 0) {
+        document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
+        document.getElementsByClassName('subMenuActive')[0].classList.remove('subMenuActive');
+      }
+    }
+  }
 
 
   addNewDay(index: number): void {
     this.days.push(new Day(this.totalNumDays + 1, "mardi"));
     this.totalNumDays++;
   }
-  addNewExercise(): void {
-    this.exercises.push(new Exercise(2, "bench"));
+  addNewExercise(index: number): void {
+    this.days[index].exercises.push(new Exercise(1, "bench"));
   }
 
 
   toggleMenu(index: number): void{
-    var menus = document.getElementsByClassName('openMenu');
-    var subMenus = document.getElementsByClassName('openSubMenu');
-    if(!document.getElementsByClassName('dropdown-menu')[index].classList.contains('openMenu') && menus.length > 0) {
-          document.getElementsByClassName('active')[0].classList.remove('active');
-          document.getElementsByClassName('openMenu')[0].classList.remove('openMenu');
-          if (subMenus.length > 0) {
-            document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
-          }
-          document.getElementsByClassName('dropdown-menu')[index].classList.add('openMenu');
-          document.getElementsByClassName('newExercise')[index].classList.add('active');
-    } else if (document.getElementsByClassName('dropdown-menu')[index].classList.contains('openMenu')) {
-      document.getElementsByClassName('dropdown-menu')[index].classList.remove('openMenu');
-      document.getElementsByClassName('newExercise')[index].classList.remove('active');
-      document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
-    } else {
-      document.getElementsByClassName('dropdown-menu')[index].classList.add('openMenu');
-      document.getElementsByClassName('newExercise')[index].classList.add('active');
+    let openedMenus = document.getElementsByClassName('openMenu')
+    let openedSubMenus = document.getElementsByClassName('openSubMenu')
+    if (openedMenus.length > 0 ) {
+      document.getElementsByClassName('menuActive')[0].classList.remove('menuActive');
+      document.getElementsByClassName('openMenu')[0].classList.remove('openMenu');
     }
-
+    if (openedSubMenus.length > 0 ) {
+      document.getElementsByClassName('subMenuActive')[0].classList.remove('subMenuActive');
+      document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
+    }
+    document.getElementsByClassName('dropdown-menu')[index].classList.toggle('openMenu');
+    document.getElementsByClassName('newExercise')[index].classList.toggle('menuActive');
   }
 
   toggleMenu2(index: number): void{
-    var menus = document.getElementsByClassName('openSubMenu');
-    if(!document.getElementsByClassName('submenu-arms')[index].classList.contains('openSubMenu') && menus.length > 0) {
-          document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
-          document.getElementsByClassName('submenu-arms')[index].classList.add('openSubMenu');
-    } else if (document.getElementsByClassName('submenu-arms')[index].classList.contains('openSubMenu')) {
-      document.getElementsByClassName('submenu-arms')[index].classList.remove('openSubMenu');
-    } else {
-      document.getElementsByClassName('submenu-arms')[index].classList.add('openSubMenu');
+    let openedSubMenus = document.getElementsByClassName('openSubMenu')
+    if (openedSubMenus.length > 0 ) {
+      document.getElementsByClassName('subMenuActive')[0].classList.remove('subMenuActive');
+      document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
     }
+    document.getElementsByClassName('submenu-arms')[index].classList.toggle('openSubMenu');
+    document.getElementsByClassName('bodypart')[index * 6 + 0].classList.toggle('subMenuActive');
   }
 
   toggleMenu3(index: number): void{
-    var menus = document.getElementsByClassName('openSubMenu');
-    if(!document.getElementsByClassName('submenu-shoulders')[index].classList.contains('openSubMenu') && menus.length > 0) {
-          document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
-          document.getElementsByClassName('submenu-shoulders')[index].classList.add('openSubMenu');
-    } else if (document.getElementsByClassName('submenu-shoulders')[index].classList.contains('openSubMenu')) {
-      document.getElementsByClassName('submenu-shoulders')[index].classList.remove('openSubMenu');
-    } else {
-      document.getElementsByClassName('submenu-shoulders')[index].classList.add('openSubMenu');
+    let openedSubMenus = document.getElementsByClassName('openSubMenu')
+    if (openedSubMenus.length > 0 ) {
+      document.getElementsByClassName('subMenuActive')[0].classList.remove('subMenuActive');
+      document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
     }
+    document.getElementsByClassName('submenu-shoulders')[index].classList.toggle('openSubMenu');
+    document.getElementsByClassName('bodypart')[index * 6 + 1].classList.toggle('subMenuActive');
   }
 
   toggleMenu4(index: number): void{
-    var menus = document.getElementsByClassName('openSubMenu');
-    if(!document.getElementsByClassName('submenu-chest')[index].classList.contains('openSubMenu') && menus.length > 0) {
-          document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
-          document.getElementsByClassName('submenu-chest')[index].classList.add('openSubMenu');
-    } else if (document.getElementsByClassName('submenu-chest')[index].classList.contains('openSubMenu')) {
-      document.getElementsByClassName('submenu-chest')[index].classList.remove('openSubMenu');
-    } else {
-      document.getElementsByClassName('submenu-chest')[index].classList.add('openSubMenu');
+    let openedSubMenus = document.getElementsByClassName('openSubMenu')
+    if (openedSubMenus.length > 0 ) {
+      document.getElementsByClassName('subMenuActive')[0].classList.remove('subMenuActive');
+      document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
     }
-
+    document.getElementsByClassName('submenu-chest')[index].classList.toggle('openSubMenu');
+    document.getElementsByClassName('bodypart')[index * 6 + 2].classList.toggle('subMenuActive');
   }
 
   toggleMenu5(index: number): void{
-    var menus = document.getElementsByClassName('openSubMenu');
-    if(!document.getElementsByClassName('submenu-back')[index].classList.contains('openSubMenu') && menus.length > 0) {
-          document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
-          document.getElementsByClassName('submenu-back')[index].classList.add('openSubMenu');
-    } else if (document.getElementsByClassName('submenu-back')[index].classList.contains('openSubMenu')) {
-      document.getElementsByClassName('submenu-back')[index].classList.remove('openSubMenu');
-    } else {
-      document.getElementsByClassName('submenu-back')[index].classList.add('openSubMenu');
+    let openedSubMenus = document.getElementsByClassName('openSubMenu')
+    if (openedSubMenus.length > 0 ) {
+      document.getElementsByClassName('subMenuActive')[0].classList.remove('subMenuActive');
+      document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
     }
-
+    document.getElementsByClassName('submenu-back')[index].classList.toggle('openSubMenu');
+    document.getElementsByClassName('bodypart')[index * 6 + 3].classList.toggle('subMenuActive');
   }
 
   toggleMenu6(index: number): void{
-    var menus = document.getElementsByClassName('openSubMenu');
-    if(!document.getElementsByClassName('submenu-core')[index].classList.contains('openSubMenu') && menus.length > 0) {
-          document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
-          document.getElementsByClassName('submenu-core')[index].classList.add('openSubMenu');
-    } else if (document.getElementsByClassName('submenu-core')[index].classList.contains('openSubMenu')) {
-      document.getElementsByClassName('submenu-core')[index].classList.remove('openSubMenu');
-    } else {
-      document.getElementsByClassName('submenu-core')[index].classList.add('openSubMenu');
+    let openedSubMenus = document.getElementsByClassName('openSubMenu')
+    if (openedSubMenus.length > 0 ) {
+      document.getElementsByClassName('subMenuActive')[0].classList.remove('subMenuActive');
+      document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
     }
+    document.getElementsByClassName('submenu-core')[index].classList.toggle('openSubMenu');
+    document.getElementsByClassName('bodypart')[index * 6 + 4].classList.toggle('subMenuActive');
   }
 
   toggleMenu7(index: number): void{
-    var menus = document.getElementsByClassName('openSubMenu');
-    if(!document.getElementsByClassName('submenu-lowerbody')[index].classList.contains('openSubMenu') && menus.length > 0) {
-          document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
-          document.getElementsByClassName('submenu-lowerbody')[index].classList.add('openSubMenu');
-    } else if (document.getElementsByClassName('submenu-lowerbody')[index].classList.contains('openSubMenu')) {
-      document.getElementsByClassName('submenu-lowerbody')[index].classList.remove('openSubMenu');
-    } else {
-      document.getElementsByClassName('submenu-lowerbody')[index].classList.add('openSubMenu');
+    let openedSubMenus = document.getElementsByClassName('openSubMenu')
+    if (openedSubMenus.length > 0 ) {
+      document.getElementsByClassName('subMenuActive')[0].classList.remove('subMenuActive');
+      document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
     }
+    document.getElementsByClassName('submenu-lowerbody')[index].classList.toggle('openSubMenu');
+    document.getElementsByClassName('bodypart')[index * 6 + 5].classList.toggle('subMenuActive');
   }
 }

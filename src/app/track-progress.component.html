@@ -1,97 +1,73 @@
 <div class="container">
   <div class="newday" (click)="addNewDay()"> + Add a new day + </div>
 
-  <div class="days">
-    <div *ngFor="let day of days; let i = index" class="day">
-      <h5> {{day.id}} / {{day.date}} </h5>
+  <div *ngFor="let day of days; let i = index" class="day">
+    <h3> {{day.id}} / {{day.date}} </h3>
 
-      <div *ngFor="let exercise of exercises" class="addedExercises">
-         dddddddddddddddddddddddddddddddddd {{exercise.id}} / {{exercise.name}} 
+    <div *ngFor="let exercise of days[i].exercises" class="addedExercises">
+       <h5> {{exercise.id}} / {{exercise.name}} </h5>
+    </div>
+
+    <div class="menuContainer">
+      <div class="newExercise" (click)="toggleMenu(i)">
+        <h4> + Add new exercise + </h4>
       </div>
 
-      <div class="menuContainer">
-        <div class="newExercise" (click)="toggleMenu(i)">
-          <h4>+ Add new exercise +</h4>
-        </div>
-
-        <div class="dropdown-menu">
-          <div class="bodypart" (click)="toggleMenu2(i)"> Arms >
-          </div>
-          <div class="bodypart" (click)="toggleMenu3(i)"> Shoulders >
-          </div>
-          <div class="bodypart" (click)="toggleMenu4(i)"> Chest >
-          </div>
-          <div class="bodypart" (click)="toggleMenu5(i)"> Back >
-          </div>
-          <div class="bodypart" (click)="toggleMenu6(i)"> Core >
-          </div>
-          <div class="bodypart" (click)="toggleMenu7(i)"> Lower Body >
-          </div>
-        </div>
-
-        <div class="submenu-arms">
-          <div class="exercise" (click)="addNewExercise()"> asda12 </div>
-          <div class="exercise" (click)="addNewExercise()"> asda12 </div>
-          <div class="exercise" (click)="addNewExercise()"> asda12 </div>
-          <div class="exercise" (click)="addNewExercise()"> asda12 </div>
-          <div class="exercise" (click)="addNewExercise()"> asda12 </div>
-          <div class="exercise" (click)="addNewExercise()"> asda12 </div>
-          <div class="exercise" (click)="addNewExercise()"> asda12 </div>
-        </div>
-
-        <div class="submenu-shoulders">
-          <div class="exercise"> asda1223 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-        </div>
-
-        <div class="submenu-chest">
-          <div class="exercise"> asda123245 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-        </div>
-
-        <div class="submenu-back">
-          <div class="exercise"> asda1234523452 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-        </div>
-
-        <div class="submenu-core">
-          <div class="exercise"> asda12344222 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-        </div>
-
-        <div class="submenu-lowerbody">
-          <div class="exercise"> asda1555555552 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-          <div class="exercise"> asda12 </div>
-        </div>
-
-
-
+      <div class="dropdown-menu">
+        <div class="bodypart" (click)="toggleMenu2(i)"> Arms > </div>
+        <div class="bodypart" (click)="toggleMenu3(i)"> Shoulders > </div>
+        <div class="bodypart" (click)="toggleMenu4(i)"> Chest > </div>
+        <div class="bodypart" (click)="toggleMenu5(i)"> Back > </div>
+        <div class="bodypart" (click)="toggleMenu6(i)"> Core > </div>
+        <div class="bodypart" (click)="toggleMenu7(i)"> Lower Body > </div>
       </div>
+
+      <div class="submenu-arms">
+        <div class="exercise" (click)="addNewExercise(i)"> Standing Curls </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Hammer Curls </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Spider Curls </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Seated Curls </div>
+      </div>
+
+      <div class="submenu-shoulders">
+        <div class="exercise" (click)="addNewExercise(i)"> OHP </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Dumbbell Curls </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Push Press</div>
+        <div class="exercise" (click)="addNewExercise(i)"> Lateral Raises </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Face Pulls </div>
+      </div>
+
+      <div class="submenu-chest">
+        <div class="exercise" (click)="addNewExercise(i)"> Bench Press </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Incline Bench Press </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Decline Bench Press </div>
+      </div>
+
+      <div class="submenu-back">
+        <div class="exercise" (click)="addNewExercise(i)"> Pull Ups </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Chin Ups </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Lateral Pulldown </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Barbell Rows </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Dumbbel Rows </div>
+      </div>
+
+      <div class="submenu-core">
+        <div class="exercise" (click)="addNewExercise(i)"> Ab Wheel </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Crunches </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Planks </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Side Planks </div>
+      </div>
+
+      <div class="submenu-lowerbody">
+        <div class="exercise" (click)="addNewExercise(i)"> Squats </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Deadlifts </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Leg press </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Hamstring Curls </div>
+        <div class="exercise" (click)="addNewExercise(i)"> Leg curls </div>
+      </div>
+
+
+
     </div>
   </div>
 </div>

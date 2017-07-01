@@ -1,16 +1,17 @@
 .box {
-  background-color: #F7B733;
+  background-color: #61892f;
   display: inline-block;
   width: 250px;
   height: 170px;
   margin: 250px 10px 10px 10px;
   padding: 20px;
-  border-radius: 8%;
+  border-radius: 8px;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
   vertical-align: middle;
   line-height: 150px;
   font-size: 30px;
+  border: 2px solid black;
 }
 
 
