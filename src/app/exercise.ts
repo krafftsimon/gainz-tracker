@@ -1,9 +1,13 @@
 export class Exercise {
-  id: number;
   name: string;
+  sets: number;
+  reps: number;
+  weight: number;
 
-  constructor(num: number, str: string) {
-    this.id = num;
+  constructor (str: string, sets: number, reps: number, weight: number) {
     this.name = str;
+    this.sets = sets;
+    this.reps = reps;
+    this.weight = weight;
   }
 }

@@ -1,0 +1,48 @@
+.container {
+  width: 100%;
+  min-height: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.graph {
+  width: 65%;
+  margin: 0 auto;
+}
+
+.graph-buttons {
+  color: white;
+  background-color: rgba(19, 73, 81, 1);
+  width: 15%;
+  height: 40px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 2px;
+  font-family: 'nunito';
+  margin: 20px;
+  line-height: 37px;
+  box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.5);
+  border: 1px solid black;
+  padding: 4px;
+}
+
+.graph-buttons:hover {
+    border: 1px solid white;
+}
+
+.graph-buttons:active {
+  background-color: rgba(09, 53, 61, 1);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5) inset;
+}
+
+.graph-buttons:focus {
+  background-color: #496b19;
+  border: 1px solid #000000;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5) inset;
+}
+
+.buttons-container {
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100px;
+}

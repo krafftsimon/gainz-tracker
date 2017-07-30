@@ -1,26 +1,32 @@
 .container {
-  max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 10px;
-  clear: both;
+  font-family: 'nunito';
 }
 .programs {
-  margin: 0 0 2em 0;
+  margin: 0 auto;
   list-style-type: none;
   padding: 0;
-  width: 15em;
+  width: 100%;
+  margin-top: 45px;
 }
 
 .programs li {
+  width: 40%;
+  color: black;
   cursor: pointer;
   position: relative;
   left: 0;
-  background-color: #EEE;
-  margin: .5em;
+  background-color: #C0C0C0;
+  margin: 20px 20px;
   padding: .3em 0;
   height: 1.6em;
   border-radius: 4px;
+  box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  text-align: left;
 }
+
 
 .programs .badge {
   display: inline-block;
@@ -28,24 +34,125 @@
   color: white;
   padding: 0.8em 0.7em 0 0.7em;
   background-color: #607D8B;
-  line-height: 1em;
+  line-height: 10px;
   position: relative;
   top: -5px;
-  height: 2em;
-  margin-right: 1.8em;
-  border-radius: 4px 0 0 4px;
+  height: 1.9em;
+  margin-right: 1.1em;
+  border-radius: 3px 0 0 3px;
 }
 
-.programs li.selected:hover {
-  background-color: #BBD8DC !important;
-  color: white;
+.programs li:active {
+  background-color: #DDD;
+  border: 1px solid #000000;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5) inset;
 }
+
 .programs li:hover {
-  color: #607D8B;
+  color: black;
   background-color: #DDD;
   left: .3em;
 }
 .programs .text {
   position: relative;
   top: -3px;
+}
+
+.statsDiv {
+  color: white;
+  width: 40%;
+  margin: 20px 20px;
+  background-color: rgba(19, 73, 81, 0.7);
+  border-radius: 2px;
+  display: inline-block;
+  vertical-align: middle;
+  min-height: 490px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.7);
+  border: 1px solid grey;
+}
+
+.programsDiv {
+  background-color: rgba(19, 73, 81, 0.7);
+  border-radius: 2px;
+  margin: 20px 20px;
+  display: inline-block;
+  width: 40%;
+  color: white;
+  min-height: 490px;
+  vertical-align: middle;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.7);
+  border: 1px solid grey;
+}
+
+
+label {
+}
+
+input {
+  width: 40px;
+  margin-right: 40px;
+  margin-left: 8px;
+  border-radius: 2px;
+}
+
+h3 {
+  margin-top: 0px;
+  margin-bottom: -20px;
+}
+
+h2 {
+}
+
+
+.liftstats {
+  width: 90%;
+  margin: 10px 20px 20px 20px;
+  border-bottom: 1px solid grey;
+  padding: 5px;
+  text-align: left;
+}
+
+.scheduleDiv {
+  background-color: rgba(19, 73, 81, 0.7);
+  border-radius: 2px;
+  margin: 20px 20px;
+  display: inline-block;
+  width: 95%;
+  color: white;
+  vertical-align: middle;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.7);
+  border: 1px solid grey;
+}
+
+table {
+  margin: 10px;
+  display: inline-block;
+  border-collapse: collapse;
+}
+
+#table1{
+}
+
+th {
+  border: 1px solid grey;
+  padding: 10px;
+}
+
+td {
+  border: 1px solid grey;
+  padding: 10px;
+  width: 150px;
+}
+
+tr:hover {
+  background-color: rgba(100, 100, 100, 0.5);
+}
+
+tr:first-child, tr:nth-child(4), tr:nth-child(7) {
+  border-bottom: 3px solid #c4c4c4;
+}
+
+hr {
+  margin: 50px;
+  border: 1px solid grey;
 }
