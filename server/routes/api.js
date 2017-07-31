@@ -7,7 +7,6 @@ const Exercise = require('../models/exercise');
 const db = "mongodb://simon:invinsible4@ds151242.mlab.com:51242/gainz-tracker";
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const cors = require('cors');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(db, {useMongoClient: true}, function(err) {
