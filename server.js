@@ -10,12 +10,6 @@ const api = require('./server/routes/api');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Enable CORS
-app.use(cors());
-
-// Enable CORS Pre-Flight
-app.options('*', cors())
-
 // Serve static files
 app.use(express.static(path.join(__dirname, 'dist')));
 
