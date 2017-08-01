@@ -1,3 +1,13 @@
+@media only screen and (max-width: 414px) {
+  .box {
+    display: block !important;
+    margin: 5px auto 20px !important;
+    width: 80% !important;
+    height: 130px !important;
+    padding: 30px 20px 20px 20px !important;
+  }
+}
+
 .box {
   background-color: rgba(19, 73, 81, 1);
   display: inline-block;

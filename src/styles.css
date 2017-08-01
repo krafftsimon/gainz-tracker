@@ -6,4 +6,5 @@ html, body {
   background-attachment: fixed;
   background-size: cover;
   height: 100%;
+  font-size: 100%;
 }

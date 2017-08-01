@@ -8,7 +8,7 @@
 
     <div *ngFor="let exercise of days[i].exercises; let j = index" class="addedExercises">
       <div class="deleteExercise" (click)="deleteExercise(i, j)"><fa name="window-close"></fa></div>
-      <h5> {{exercise.name}}: <strong>{{exercise.sets}}</strong> set(s) of <strong>{{exercise.reps}}</strong> rep(s) at <strong>{{exercise.weight}}</strong> lbs </h5>
+       <h5>{{exercise.name}}: <strong>{{exercise.sets}}</strong> set(s) of <strong>{{exercise.reps}}</strong> rep(s) at <strong>{{exercise.weight}}</strong> lbs</h5>
     </div>
 
     <div class="newExercise"><h4><fa name="bars" class="dropdown-icon"></fa>Add new exercise</h4>

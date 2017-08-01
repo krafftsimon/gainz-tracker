@@ -1,9 +1,62 @@
+@media only screen and (max-width: 414px) {
+  .day {
+    width: 90% !important;
+  }
+
+  .newday {
+    width: 90% !important;
+    margin-bottom: 60px !important;
+  }
+
+  .newExercise {
+    font-size: 16px;
+    padding: 8px 5px 8px 10px !important;
+    width: 200px !important;
+  }
+  .addedExercises {
+    height: 34px !important;
+    line-height: 25px;
+    padding: 10px 20px 10px 10px !important;
+  }
+
+  h5 {
+    margin-right: 30px;
+  }
+
+  .dropdown-menu {
+    width: 150px !important;
+    margin-left: -5px !important;
+  }
+
+  .submenu-arms, .submenu-shoulders, .submenu-chest, .submenu-back, .submenu-core, .submenu-lowerbody {
+    width: 150px !important;
+    margin-left: 1px !important;
+  }
+
+  .exercise {
+    padding: 10px 7px 10px 7px !important;
+    line-height: 20px;
+  }
+
+  .speech {
+    position: relative !important;
+    top: 0 !important;
+    float: none !important;
+    margin-left: 200px !important;
+  }
+
+  .speech:before {
+    right: 35px !important;
+    border-width: 20px 20px 0 0 !important;
+  }
+}
+
 .container {
   max-width: 1800px;
   margin: 0 auto;
   padding: 10px 10px;
   clear: both;
-    font-family: 'nunito';
+  font-family: 'nunito';
 }
 
 .newday {
@@ -16,7 +69,7 @@
   text-align: center;
   vertical-align: middle;
   line-height: 35px;
-  font-size: 30px;
+  font-size: 2em;
   border: 1px solid black;
   color: white
 }
@@ -45,7 +98,6 @@
   border: 1px solid black;
 }
 
-
 h5 {
   padding: 0;
   font-weight: normal;
@@ -68,13 +120,15 @@ h4 {
 .newExercise {
   margin: 15px 5px 5px 5px;
   padding: 8px 5px 8px 20px;
-  width: 200px;
+  width: 35%;
   height: 18px;
   background-color: #C0C0C0;
   border-radius: 2px;
   box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.6);
   color: black;
   border: 1px solid grey;
+  font-size: 19px;
+  position: relative;
 }
 
 .trans-layer {
@@ -194,9 +248,8 @@ hr {
   box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.6);
   margin: 15px 5px 5px 5px;
   padding: 20px;
-  position: relative;
-  color: black;
   border: 1px solid grey;
+  position: relative;
 }
 
 .deleteDay {
