@@ -65,7 +65,7 @@ h1:hover {
 
 .router {
    max-width: 1200px;
-   min-height: 92%;
+   min-height: 92vh;
    margin: 0 auto;
    background-color: rgba(10, 10, 10, 0.8);
    border-left: 2px solid black;
@@ -90,35 +90,46 @@ h1:hover {
 
 .modal-content {
     background-color: #e5e5e5;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto;
     padding: 20px 20px 10px 20px;
     border: 2px solid #888;
     border-radius: 4px;
-    width: 180px; /* Could be more or less, depending on screen size */
+    width: 200px;
     font-family: 'nunito';
 }
 
 .form-group {
-  margin: 0 0 5px 0;
+  margin: 0 10px 5px 10px;
 }
 
 .modal-links {
   text-align: center;
   margin: 5px;
   text-decoration: underline;
+  cursor: default;
+}
+
+.modal-links:hover {
+  font-weight: bold;
 }
 
 .auth-input {
-    box-shadow: 0 0 2px grey inset;
-    height: 20px;
-    border: 1px solid #a8a8a8;
-    border-radius: 2px;
-    width: 174px;
+  display: block;
+  box-shadow: 0 0 2px grey inset;
+  margin: 0 auto;
+  height: 20px;
+  border: 1px solid #a8a8a8;
+  width: 100%;
+}
+
+.auth-input:hover {
+  border: 1px solid #545454;
+  border-radius: 2px;
 }
 
 button {
   padding: 7px;
-  margin: 20px auto;
+  margin: 30px auto;
   width: 130px;
   display: block;
   font-family: 'nunito';
@@ -132,5 +143,12 @@ button:hover {
 }
 
 input.ng-invalid.ng-touched {
-  border: 1px solid red;
+  border: 1px solid #cc0000;
+  border-radius: 2px;
+}
+
+
+.errormsg {
+  color: #cc0000;
+  font-size: 13px;
 }

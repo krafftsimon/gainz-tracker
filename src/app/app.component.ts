@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   registerFormState: string = 'out';
   myLoginForm: FormGroup;
   myRegisterForm: FormGroup;
+  errorMsg: string = '';
 
   constructor(private authService: AuthService){}
 
@@ -42,9 +43,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     var emailVal = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.myRegisterForm = new FormGroup({
-      username: new FormControl(null, Validators.required),
-      password: new FormControl(null, Validators.required),
-      email: new FormControl(null, [Validators.required, Validators.pattern(emailVal)])
+      username: new FormControl(null, [Validators.required, Validators.minLength(4)], this.isUsernameUnique.bind(this)),
+      password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
+      email: new FormControl(null, [Validators.required, Validators.pattern(emailVal)], this.isEmailUnique.bind(this))
     })
     this.myLoginForm = new FormGroup({
       username: new FormControl(null, Validators.required),
@@ -58,11 +59,12 @@ export class AppComponent implements OnInit {
     this.authService.login(user).subscribe(data => { localStorage.setItem('token', data.token);
                                                      localStorage.setItem('userId', data.userId);
                                                      console.log(data);
-                                                     window.location.reload();},
-                                            error => console.error(error));
-    this.myLoginForm.reset();
-    this.modalActive = false;
-    this.modalState = 'out';
+                                                     window.location.reload();
+                                                     this.myLoginForm.reset();
+                                                     this.modalActive = false;
+                                                     this.modalState = 'out';},
+                                            error => {console.error(error);
+                                                      this.errorMsg = error.error.message;});
   }
 
   onSubmitRegister(): void {
@@ -85,6 +87,26 @@ export class AppComponent implements OnInit {
     window.location.reload();
   }
 
+  isUsernameUnique(control: FormControl) {
+    const q = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.authService.isUsernameUnique(control.value).subscribe(() => { resolve(null);},
+                                                                    () => { resolve({ 'isUsernameUnique': true });});
+      }, 100);
+    });
+    return q;
+  }
+
+  isEmailUnique(control: FormControl) {
+    const q = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.authService.isEmailUnique(control.value).subscribe(() => { resolve(null);},
+                                                                    () => { resolve({ 'isEmailUnique': true });});
+      }, 100);
+    });
+    return q;
+  }
+
   isModalActive(): string {
     if(this.modalActive) {
       return "block";
@@ -104,6 +126,14 @@ export class AppComponent implements OnInit {
   isRegisterFormActive(): string {
     if(this.registerFormActive) {
       return "block";
+    } else {
+      return "none";
+    }
+  }
+
+  isErrorMsgActive(): string {
+    if(this.errorMsg) {
+      return "inline";
     } else {
       return "none";
     }

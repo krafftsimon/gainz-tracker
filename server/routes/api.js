@@ -29,7 +29,7 @@ router.get('/users', function(req, res) {
 
 
 
-router.post('/users', function (req, res, next) {
+router.post('/users/register', function (req, res, next) {
   var user = new User({
     username: req.body.username,
     password: bcrypt.hashSync(req.body.password, 10),
@@ -45,6 +45,75 @@ router.post('/users', function (req, res, next) {
     res.status(201).json({
       message: 'User created',
       obj: result
+    });
+  });
+});
+
+router.post('/users/login', function (req, res, next) {
+  User.findOne({username: req.body.username}, function(err, user) {
+    if (err) {
+      return res.status(500).json({
+        title: 'An error occurred',
+        error: err
+      });
+    }
+    if (!user) {
+      return res.status(401).json({
+        title: 'Login failed',
+        error: {message: 'Invalid username or password.'}
+      });
+    }
+    if(!bcrypt.compareSync(req.body.password, user.password)) {
+      return res.status(401).json({
+        title: 'Login failed',
+        error: {message: 'Invalid username or password.'}
+      });
+    }
+    var token = jwt.sign({user: user}, 'secret', {expiresIn: 7200});
+    res.status(201).json({
+      message: 'Successfully logged in!',
+      token: token,
+      userId: user._id
+    });
+  });
+});
+
+router.post('/users/isUsernameUnique', function (req, res, next) {
+  User.findOne({username: req.body.username}, function(err, user) {
+    if (err) {
+      return res.status(500).json({
+        title: 'An error occurred',
+        error: err
+      });
+    }
+    if (!user) {
+      return res.status(200).json({
+        title: 'Username is unique.'
+      });
+    }
+    return res.status(406).json({
+      title: 'Username is taken.',
+      error: {message: 'Username is taken.'}
+    });
+  });
+});
+
+router.post('/users/isEmailUnique', function (req, res, next) {
+  User.findOne({email: req.body.email}, function(err, user) {
+    if (err) {
+      return res.status(500).json({
+        title: 'An error occurred',
+        error: err
+      });
+    }
+    if (!user) {
+      return res.status(200).json({
+        title: 'Email is unique.'
+      });
+    }
+    return res.status(406).json({
+      title: 'Email already used',
+      error: {message: 'This email address was already used.'}
     });
   });
 });
@@ -170,35 +239,5 @@ router.patch('/users/days/exercises', function (req, res, next) {
     });
   });
 });
-
-router.post('/users/login', function (req, res, next) {
-  User.findOne({username: req.body.username}, function(err, user) {
-    if (err) {
-      return res.status(500).json({
-        title: 'An error occurred',
-        error: err
-      });
-    }
-    if (!user) {
-      return res.status(401).json({
-        title: 'Login failed',
-        error: {message: 'Invalid user or password.'}
-      });
-    }
-    if(!bcrypt.compareSync(req.body.password, user.password)) {
-      return res.status(401).json({
-        title: 'Login failed',
-        error: {message: 'Invalid user or password.'}
-      });
-    }
-    var token = jwt.sign({user: user}, 'secret', {expiresIn: 7200});
-    res.status(201).json({
-      message: 'Successfully logged in!',
-      token: token,
-      userId: user._id
-    });
-  });
-});
-
 
 module.exports = router;

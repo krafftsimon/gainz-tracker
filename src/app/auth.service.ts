@@ -14,15 +14,15 @@ export class AuthService {
 
   register(user: User) {
     const body = JSON.stringify(user);
-    const headers = new Headers({'Content-Type': 'application/json'})
-    return this.http.post('http://' + pURL + ':80/api/users', body, {headers: headers})
+    const headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.post('http://' + pURL + ':80/api/users/register', body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
   login(user: User) {
     const body = JSON.stringify(user);
-    const headers = new Headers({'Content-Type': 'application/json'})
+    const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post('http://' + pURL + ':80/api/users/login', body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
@@ -34,5 +34,21 @@ export class AuthService {
 
   isLoggedIn() {
     return localStorage.getItem('token') !== null;
+  }
+
+  isUsernameUnique(username: string) {
+    const body = JSON.stringify({username: username});
+    const headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.post('http://' + pURL + ':80/api/users/isUsernameUnique', body, {headers: headers})
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  isEmailUnique(email: string) {
+    const body = JSON.stringify({email: email});
+    const headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.post('http://' + pURL + ':80/api/users/isEmailUnique', body, {headers: headers})
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
   }
 }
