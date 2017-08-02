@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 
 import { User } from './user';
 
+const dURL: string = 'localhost';
+const pURL: string = '35.193.240.128';
+
 @Injectable()
 export class AuthService {
   constructor(private http: Http) {}
@@ -12,7 +15,7 @@ export class AuthService {
   register(user: User) {
     const body = JSON.stringify(user);
     const headers = new Headers({'Content-Type': 'application/json'})
-    return this.http.post('http://35.193.240.128:80/api/users', body, {headers: headers})
+    return this.http.post('http://' + pURL + ':80/api/users', body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -20,7 +23,7 @@ export class AuthService {
   login(user: User) {
     const body = JSON.stringify(user);
     const headers = new Headers({'Content-Type': 'application/json'})
-    return this.http.post('http://35.193.240.128:80/api/users/login', body, {headers: headers})
+    return this.http.post('http://' + pURL + ':80/api/users/login', body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }

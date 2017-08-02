@@ -16,7 +16,6 @@ mongoose.connect(db, {useMongoClient: true}, function(err) {
 });
 
 router.get('/users', function(req, res) {
-  console.log('Requesting users');
   User.findOne({username: 'sim2'})
       .exec(function(err, users) {
         if (err) {
@@ -80,7 +79,6 @@ router.post('/users/days', function (req, res, next) {
 
 router.patch('/users/days', function (req, res, next) {
   var decoded = jwt.decode(req.query.token);
-  console.log(req.body.index);
   User.findById(decoded.user._id, function (err, user) {
     if (err) {
         return res.status(500).json({

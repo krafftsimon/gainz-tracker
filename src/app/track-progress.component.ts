@@ -4,6 +4,8 @@ import { DropdownModule } from 'ngx-dropdown';
 
 import { fadeInRouterAnimation } from './animations/fade-in-router.animation';
 import { dayListAnimation } from './animations/day-list.animation';
+import { exerciseListAnimation } from './animations/exercise-list.animation';
+import { dropdownMenuAnimation } from './animations/dropdown-menu.animation';
 import { Day } from './day';
 import { DAYS } from './day-list';
 import { Exercise } from './exercise';
@@ -15,7 +17,7 @@ import { AuthService } from './auth.service';
   selector: 'track-progress-page',
   templateUrl: './track-progress.component.html',
   styleUrls: ['./track-progress.component.css'],
-  animations: [fadeInRouterAnimation, dayListAnimation],
+  animations: [fadeInRouterAnimation, dayListAnimation, exerciseListAnimation, dropdownMenuAnimation],
   host: { '[@fadeInRouterAnimation]': 'true',
   '[style.display]': "'block'" }
 })

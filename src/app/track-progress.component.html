@@ -6,7 +6,7 @@
     <h3> {{day.date | date}} </h3>
     <div class="deleteDay" (click)="deleteDay(i)"><fa name="window-close" size="2x"></fa></div>
 
-    <div *ngFor="let exercise of days[i].exercises; let j = index" class="addedExercises">
+    <div *ngFor="let exercise of days[i].exercises; let j = index" class="addedExercises" [@exerciseListAnimation]="''">
       <div class="deleteExercise" (click)="deleteExercise(i, j)"><fa name="window-close"></fa></div>
        <h5>{{exercise.name}}: <strong>{{exercise.sets}}</strong> set(s) of <strong>{{exercise.reps}}</strong> rep(s) at <strong>{{exercise.weight}}</strong> lbs</h5>
     </div>
@@ -15,7 +15,7 @@
       <div class="trans-layer"  (click)="toggleMenu(i)"></div>
     </div>
 
-      <div class="dropdown-menu">
+      <div class="dropdown-menu" [@dropdownMenuAnimation]="''">
         <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-arms')"> Arms <fa name="angle-right" class="arrow-icon"></fa> </div>
         <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-shoulders')"> Shoulders <fa name="angle-right" class="arrow-icon"></fa> </div>
         <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-chest')"> Chest <fa name="angle-right" class="arrow-icon"></fa> </div>
