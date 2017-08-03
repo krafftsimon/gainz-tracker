@@ -4,12 +4,12 @@ const mongoose = require('mongoose');
 const User = require('../models/user');
 const Day = require('../models/day');
 const Exercise = require('../models/exercise');
-const db = "mongodb://simon:invinsible4@ds151242.mlab.com:51242/gainz-tracker";
+const db = require('./credentials');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(db, {useMongoClient: true}, function(err) {
+mongoose.connect(db.database(), {useMongoClient: true}, function(err) {
   if(err) {
     console.log('Connection error');
   }
