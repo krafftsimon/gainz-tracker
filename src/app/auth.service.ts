@@ -15,7 +15,7 @@ export class AuthService {
   register(user: User) {
     const body = JSON.stringify(user);
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.post('http://' + pURL + ':80/api/users/register', body, {headers: headers})
+    return this.http.post('http://' + pURL + ':3000/api/users/register', body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -23,7 +23,7 @@ export class AuthService {
   login(user: User) {
     const body = JSON.stringify(user);
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.post('http://' + pURL + ':80/api/users/login', body, {headers: headers})
+    return this.http.post('http://' + pURL + ':3000/api/users/login', body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -39,7 +39,7 @@ export class AuthService {
   isUsernameUnique(username: string) {
     const body = JSON.stringify({username: username});
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.post('http://' + pURL + ':80/api/users/isUsernameUnique', body, {headers: headers})
+    return this.http.post('http://' + pURL + ':3000/api/users/isUsernameUnique', body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -47,7 +47,7 @@ export class AuthService {
   isEmailUnique(email: string) {
     const body = JSON.stringify({email: email});
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.post('http://' + pURL + ':80/api/users/isEmailUnique', body, {headers: headers})
+    return this.http.post('http://' + pURL + ':3000/api/users/isEmailUnique', body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
