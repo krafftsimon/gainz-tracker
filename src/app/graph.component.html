@@ -1,18 +1,20 @@
 <div class="container">
   <div class="buttons-container">
-    <div class="graph-buttons" (click)="benchGraph()"> Bench Press </div>
-    <div class="graph-buttons" (click)="squatGraph()"> Squat </div>
-    <div class="graph-buttons" (click)="deadliftGraph()"> Deadlift </div>
-    <div class="graph-buttons" (click)="ohpGraph()"> Overhead Press </div>
+    <div class="graph-buttons" (click)="generateGraph('Bench press')"> Bench Press </div>
+    <div class="graph-buttons" (click)="generateGraph('Squat')"> Squat </div>
+    <div class="graph-buttons" (click)="generateGraph('Deadlift')"> Deadlift </div>
+    <div class="graph-buttons" (click)="generateGraph('Overhead press')"> Overhead Press </div>
   </div>
   <div class="graph">
-    <canvas baseChart width="400" height="400"
-                    [datasets]="lineChartData"
-                    [labels]="lineChartLabels"
-                    [options]="lineChartOptions"
-                    [colors]="lineChartColors"
-                    [legend]="lineChartLegend"
-                    [chartType]="lineChartType"></canvas>
-
+    <canvas baseChart
+            width="400"
+            height="400"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType">
+    </canvas>
   </div>
 </div>

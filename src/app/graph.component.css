@@ -13,21 +13,21 @@
 .graph-buttons {
   color: white;
   background-color: rgba(19, 73, 81, 1);
-  width: 15%;
-  height: 40px;
   display: inline-block;
+  width: 120px;
   text-align: center;
-  border-radius: 2px;
   font-family: 'nunito';
-  margin: 20px;
-  line-height: 37px;
-  box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  flex: 1 1 auto;
   border: 1px solid black;
-  padding: 4px;
+  border-right: none;
+  transition: all .17s ease-in-out;
+  box-shadow: 2px 12px 5px 0 rgba(0, 0, 0, 0.5);
 }
 
 .graph-buttons:hover {
-    border: 1px solid white;
+  transform: translateY(7px);
+  box-shadow: none;
 }
 
 .graph-buttons:active {
@@ -42,7 +42,20 @@
 }
 
 .buttons-container {
-  margin: 0 auto;
-  width: 100%;
-  min-height: 100px;
+  margin: 40px auto;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 664px) {
+  .graph-buttons {
+    box-shadow: none;
+    border-top: none;
+  }
+
+  .graph-buttons:hover {
+    transform: none;
+  }
 }

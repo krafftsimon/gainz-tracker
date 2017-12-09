@@ -7,14 +7,13 @@
   </div>
 </div>
 
-  <div class="router">
-    <router-outlet></router-outlet>
-  </div>
+<div class="router">
+  <router-outlet></router-outlet>
+</div>
 
 
 <div class="modal" id="login-modal" [style.display]="isModalActive()" [@fadeInModalAnimation]="modalState">
   <div class="modal-content"  [@slideInModalContentAnimation]="modalState">
-
     <form [formGroup]="myLoginForm" (ngSubmit)="onSubmitLogin()" class="login-form" [style.display]="isLoginFormActive()" [@slideModalFormAnimation]="loginFormState">
       <div class="form-group">
         <label for="username"><fa name="user"></fa>Username: </label>

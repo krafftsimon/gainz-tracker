@@ -3,33 +3,36 @@
   <div class="statsDiv">
     <h2> Enter your stats... </h2>
     <div class="liftstats">
-      <h3> Stats </h3> <br>
-      <label> Bodyweight: </label> <input #bodyweight>
-      <label> Gender: </label> <input #gender> <br>
-    </div>
-    <div class="liftstats">
       <h3> Bench press: </h3> <br>
-      <label> Repetitions: </label> <input [(ngModel)]="benchReps" (keydown)="update1rmBench()">
-      <label> Weight: </label> <input [(ngModel)]="benchWeight" (keydown)="update1rmBench()">
-      <label> 1RM: {{bench1rm | number: '1.0-0'}} </label><br>
+      <div class="input-container">
+        <input placeholder="Weight" [(ngModel)]="benchWeight" (keydown)="update1rmBench()" type="number">
+        <input placeholder="Repetitions" [(ngModel)]="benchReps" (keydown)="update1rmBench()" type="number">
+      </div>
+      <label> One-Rep Max: {{bench1rm | number: '1.0-0'}} </label>
     </div>
     <div class="liftstats">
       <h3> Squat: </h3> <br>
-      <label> Repetitions: </label> <input [(ngModel)]="squatReps" (keydown)="update1rmSquat()">
-      <label> Weight: </label> <input [(ngModel)]="squatWeight" (keydown)="update1rmSquat()">
-      <label> 1RM: {{squat1rm | number: '1.0-0'}} </label><br>
+      <div class="input-container">
+        <input placeholder="Weight" [(ngModel)]="squatWeight" (keydown)="update1rmSquat()" type="number">
+        <input placeholder="Repetitions" [(ngModel)]="squatReps" (keydown)="update1rmSquat()" type="number">
+      </div>
+      <label> One-Rep Max: {{squat1rm | number: '1.0-0'}} </label>
     </div>
     <div class="liftstats">
       <h3> Deadlift: </h3> <br>
-      <label> Repetitions: </label> <input [(ngModel)]="deadliftReps" (keydown)="update1rmDeadlift()">
-      <label> Weight: </label> <input [(ngModel)]="deadliftWeight" (keydown)="update1rmDeadlift()">
-      <label> 1RM: {{deadlift1rm | number: '1.0-0'}} </label>
+      <div class="input-container">
+        <input placeholder="Weight" [(ngModel)]="deadliftWeight" (keydown)="update1rmDeadlift()" type="number">
+        <input placeholder="Repetitions" [(ngModel)]="deadliftReps" (keydown)="update1rmDeadlift()" type="number">
+      </div>
+      <label> One-Rep Max: {{deadlift1rm | number: '1.0-0'}} </label>
     </div>
     <div class="liftstats">
       <h3> Overhead Press </h3> <br>
-      <label> Repetitions: </label> <input [(ngModel)]="ohpReps" (keydown)="update1rmOHP()">
-      <label> Weight: </label> <input [(ngModel)]="ohpWeight" (keydown)="update1rmOHP()">
-      <label> 1RM: {{ohp1rm | number: '1.0-0'}} </label>
+      <div class="input-container">
+        <input placeholder="Weight" [(ngModel)]="ohpWeight" (keydown)="update1rmOHP()" type="number">
+        <input placeholder="Repetitions" [(ngModel)]="ohpReps" (keydown)="update1rmOHP()" type="number">
+      </div>
+      <label> One-Rep Max: {{ohp1rm | number: '1.0-0'}} </label>
     </div>
   </div>
 
@@ -37,7 +40,7 @@
     <h2>... then select a program. </h2>
     <ul class="programs">
       <li *ngFor="let program of programs" (click)="onSelect(program)" [class.selected]="program === selectedProgram">
-        <span class="badge">{{program.id}}</span> {{program.name}}
+        <span class="badge"></span> {{program.name}} <span class="status"> {{program.status}} </span>
       </li>
     </ul>
   </div>
@@ -55,8 +58,8 @@
         <th>Day 3 <br> Bench</th>
         <th>Day 4 <br> Squat</th>
       </tr>
-      <tr>
-        <th rowspan="3">warm-up</th>
+      <tr class="row">
+        <th rowspan="3" class="test">warm-up</th>
         <td>{{ohp40 | number: '1.0-0'}} x 5</td>
         <td>{{deadlift40 | number: '1.0-0'}} x 5</td>
         <td>{{bench40 | number: '1.0-0'}} x 5</td>
@@ -74,8 +77,8 @@
         <td>{{bench60 | number: '1.0-0'}} x 3</td>
         <td>{{squat60 | number: '1.0-0'}} x 3</td>
       </tr>
-      <tr>
-        <th rowspan="3">5/3/1</th>
+      <tr class="row">
+        <th rowspan="3" class="test">5/3/1</th>
         <td>{{ohp65 | number: '1.0-0'}} x 5</td>
         <td>{{deadlift65 | number: '1.0-0'}} x 5</td>
         <td>{{bench65 | number: '1.0-0'}} x 5</td>
@@ -93,8 +96,8 @@
         <td>{{bench85 | number: '1.0-0'}} x 5</td>
         <td>{{squat85 | number: '1.0-0'}} x 5</td>
       </tr>
-      <tr>
-        <th rowspan="2">Assistance Exercises <br> "Boring But Big"</th>
+      <tr class="row">
+        <th rowspan="2" class="test">Assistance Exercises <br> "Boring But Big"</th>
         <td>{{ohp50 | number: '1.0-0'}} x 10</td>
         <td>{{deadlift50 | number: '1.0-0'}} x 10</td>
         <td>{{bench50 | number: '1.0-0'}} x 10</td>
@@ -119,8 +122,8 @@
         <th>Day 3 <br> Bench</th>
         <th>Day 4 <br> Squat</th>
       </tr>
-      <tr>
-        <th rowspan="3">warm-up</th>
+      <tr class="row">
+        <th rowspan="3" class="test">warm-up</th>
         <td>{{ohp40 | number: '1.0-0'}} x 5</td>
         <td>{{deadlift40 | number: '1.0-0'}} x 5</td>
         <td>{{bench40 | number: '1.0-0'}} x 5</td>
@@ -138,8 +141,8 @@
         <td>{{bench60 | number: '1.0-0'}} x 3</td>
         <td>{{squat60 | number: '1.0-0'}} x 3</td>
       </tr>
-      <tr>
-        <th rowspan="3">5/3/1</th>
+      <tr class="row">
+        <th rowspan="3" class="test">5/3/1</th>
         <td>{{ohp80 | number: '1.0-0'}} x 3</td>
         <td>{{deadlift80 | number: '1.0-0'}} x 3</td>
         <td>{{bench80 | number: '1.0-0'}} x 3</td>
@@ -157,8 +160,8 @@
         <td>{{bench90 | number: '1.0-0'}} x 3</td>
         <td>{{squat90 | number: '1.0-0'}} x 3</td>
       </tr>
-      <tr>
-        <th rowspan="2">Assistance Exercises <br> "Boring But Big"</th>
+      <tr class="row">
+        <th rowspan="2" class="test">Assistance Exercises <br> "Boring But Big"</th>
         <td>{{ohp50 | number: '1.0-0'}} x 10</td>
         <td>{{deadlift50 | number: '1.0-0'}} x 10</td>
         <td>{{bench50 | number: '1.0-0'}} x 10</td>
@@ -183,8 +186,8 @@
         <th>Day 3 <br> Bench</th>
         <th>Day 4 <br> Squat</th>
       </tr>
-      <tr>
-        <th rowspan="3">warm-up</th>
+      <tr class="row">
+        <th rowspan="3" class="test">warm-up</th>
         <td>{{ohp40 | number: '1.0-0'}} x 5</td>
         <td>{{deadlift40 | number: '1.0-0'}} x 5</td>
         <td>{{bench40 | number: '1.0-0'}} x 5</td>
@@ -202,8 +205,8 @@
         <td>{{bench60 | number: '1.0-0'}} x 3</td>
         <td>{{squat60 | number: '1.0-0'}} x 3</td>
       </tr>
-      <tr>
-        <th rowspan="3">5/3/1</th>
+      <tr class="row">
+        <th rowspan="3" class="test">5/3/1</th>
         <td>{{ohp75 | number: '1.0-0'}} x 5</td>
         <td>{{deadlift75 | number: '1.0-0'}} x 5</td>
         <td>{{bench75 | number: '1.0-0'}} x 5</td>
@@ -221,8 +224,8 @@
         <td>{{bench95 | number: '1.0-0'}} x 1</td>
         <td>{{squat95 | number: '1.0-0'}} x 1</td>
       </tr>
-      <tr>
-        <th rowspan="2">Assistance Exercises <br> "Boring But Big"</th>
+      <tr class="row">
+        <th rowspan="2" class="test">Assistance Exercises <br> "Boring But Big"</th>
         <td>{{ohp50 | number: '1.0-0'}} x 10</td>
         <td>{{deadlift50 | number: '1.0-0'}} x 10</td>
         <td>{{bench50 | number: '1.0-0'}} x 10</td>
@@ -247,8 +250,8 @@
         <th>Day 3 <br> Bench</th>
         <th>Day 4 <br> Squat</th>
       </tr>
-      <tr>
-        <th rowspan="3">warm-up</th>
+      <tr class="row">
+        <th rowspan="3" class="test">warm-up</th>
         <td>{{ohp40 | number: '1.0-0'}} x 5</td>
         <td>{{deadlift40 | number: '1.0-0'}} x 5</td>
         <td>{{bench40 | number: '1.0-0'}} x 5</td>
@@ -266,8 +269,8 @@
         <td>{{bench60 | number: '1.0-0'}} x 3</td>
         <td>{{squat60 | number: '1.0-0'}} x 3</td>
       </tr>
-      <tr>
-        <th rowspan="3">5/3/1</th>
+      <tr class="row">
+        <th rowspan="3" class="test">5/3/1</th>
         <td>{{ohp40 | number: '1.0-0'}} x 5</td>
         <td>{{deadlift40 | number: '1.0-0'}} x 5</td>
         <td>{{bench40 | number: '1.0-0'}} x 5</td>
@@ -285,8 +288,8 @@
         <td>{{bench60 | number: '1.0-0'}} x 5</td>
         <td>{{squat60 | number: '1.0-0'}} x 5</td>
       </tr>
-      <tr>
-        <th rowspan="2">Assistance Exercises <br> "Boring But Big"</th>
+      <tr class="row">
+        <th rowspan="2" class="test">Assistance Exercises <br> "Boring But Big"</th>
         <td>{{ohp50 | number: '1.0-0'}} x 10</td>
         <td>{{deadlift50 | number: '1.0-0'}} x 10</td>
         <td>{{bench50 | number: '1.0-0'}} x 10</td>

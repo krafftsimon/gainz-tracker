@@ -1,7 +1,7 @@
 
-
 html {
   height: 100%;
+  width: 100%;
   background-image: url('/assets/background5.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -12,7 +12,12 @@ html {
 }
 
 body {
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+app-root {
+  display: block;
+  height: 100%;
 }

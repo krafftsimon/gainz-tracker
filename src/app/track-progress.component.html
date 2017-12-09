@@ -16,12 +16,12 @@
     </div>
 
       <div class="dropdown-menu" [@dropdownMenuAnimation]="''">
-        <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-arms')"> Arms <fa name="angle-right" class="arrow-icon"></fa> </div>
-        <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-shoulders')"> Shoulders <fa name="angle-right" class="arrow-icon"></fa> </div>
-        <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-chest')"> Chest <fa name="angle-right" class="arrow-icon"></fa> </div>
-        <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-back')"> Back <fa name="angle-right" class="arrow-icon"></fa> </div>
-        <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-core')"> Core <fa name="angle-right" class="arrow-icon"></fa> </div>
-        <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-lowerbody')"> Lower Body <fa name="angle-right" class="arrow-icon"></fa> </div>
+        <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-arms')"> Arms > </div>
+        <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-shoulders')"> Shoulders > </div>
+        <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-chest')"> Chest > </div>
+        <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-back')"> Back > </div>
+        <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-core')"> Core > </div>
+        <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-lowerbody')"> Lower Body > </div>
       </div>
 
       <div class="submenu-arms">
@@ -72,9 +72,9 @@
       <form>
         <div class="closeDetails" (click)="closeDetailsMenu()"> <fa name="window-close" size="2x"></fa> </div>
         <span>Enter sets, reps, and weight.<br></span>
-        <label>Nbr. of sets: </label><input #sets><br>
-        <label>Nbr. of reps: </label><input #reps><br>
-        <label>Weight: </label><input #weight>
+        <input type="number" placeholder="Sets" #sets><br>
+        <input type="number" placeholder="Reps" #reps><br>
+        <input type="number" placeholder="Weight" #weight>
         <div class="submit" (click)="submitDetails(i, sets, reps, weight)"> Submit </div>
       </form>
     </div>

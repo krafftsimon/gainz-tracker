@@ -1,33 +1,32 @@
-@media only screen and (max-width: 414px) {
-  .box {
-    display: block !important;
-    margin: 5px auto 20px !important;
-    width: 80% !important;
-    height: 130px !important;
-    padding: 30px 20px 20px 20px !important;
-  }
+
+.box-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 25vh;
 }
 
 .box {
   background-color: rgba(19, 73, 81, 1);
   display: inline-block;
-  width: 22%;
+  min-width: 280px;
   height: 170px;
-  margin: 250px 20px 20px 20px;
+  margin: 20px 20px 10px 20px;
   padding: 60px 20px 10px 20px;
   border-radius: 4px;
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 20px 20px 20px 10px rgba(0, 0, 0, 0.7);
   text-align: center;
   vertical-align: middle;
   line-height: 50px;
   font-size: 30px;
-  border: 1px solid black;
   font-family: 'nunito';
   color: white;
+  transition: all .17s ease-in-out;
 }
 
 .box:hover {
-  border: 1px solid white;
+  box-shadow: none;
+  transform: translate(0, 7px);
 }
 
 .box:active {
@@ -37,4 +36,19 @@
 
 .box:focus {
   outline: 0;
+}
+
+@media only screen and (max-width: 1083px) {
+  .box-container {
+      margin-top: 10vh;
+  }
+}
+
+@media only screen and (max-width: 739px) {
+  .box {
+    min-width: 80%;
+  }
+  .box-container {
+      margin-top: 0;
+  }
 }

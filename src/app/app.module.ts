@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DropdownModule } from 'ngx-dropdown';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome'
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
@@ -32,10 +33,10 @@ import { AuthService } from './auth.service';
     AppRoutingModule,
     DropdownModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
     ChartsModule,
     BrowserAnimationsModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
   ],
   providers: [DayService, AuthService],
   bootstrap: [AppComponent]

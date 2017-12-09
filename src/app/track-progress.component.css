@@ -1,55 +1,3 @@
-@media only screen and (max-width: 414px) {
-  .day {
-    width: 90% !important;
-  }
-
-  .newday {
-    width: 90% !important;
-    margin-bottom: 60px !important;
-  }
-
-  .newExercise {
-    font-size: 16px;
-    padding: 8px 5px 8px 10px !important;
-    width: 200px !important;
-  }
-  .addedExercises {
-    height: 34px !important;
-    line-height: 25px;
-    padding: 10px 20px 10px 10px !important;
-  }
-
-  h5 {
-    margin-right: 30px;
-  }
-
-  .dropdown-menu {
-    width: 150px !important;
-    margin-left: -5px !important;
-  }
-
-  .submenu-arms, .submenu-shoulders, .submenu-chest, .submenu-back, .submenu-core, .submenu-lowerbody {
-    width: 150px !important;
-    margin-left: 1px !important;
-  }
-
-  .exercise {
-    padding: 10px 7px 10px 7px !important;
-    line-height: 20px;
-  }
-
-  .speech {
-    position: relative !important;
-    top: 0 !important;
-    float: none !important;
-    margin-left: 200px !important;
-  }
-
-  .speech:before {
-    right: 35px !important;
-    border-width: 20px 20px 0 0 !important;
-  }
-}
 
 .container {
   max-width: 1800px;
@@ -71,18 +19,18 @@
   line-height: 35px;
   font-size: 2em;
   border: 1px solid black;
-  color: white
+  color: white;
+  transition: border .17s ease-in-out;
 }
 
 .newday:hover {
-
   border: 1px solid white;
 }
 
 .newday:active {
   background-color: rgba(9, 63, 71, 1);
   padding: 10px;
-  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.5) inset;
+  box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.5) inset;
 }
 
 
@@ -129,6 +77,7 @@ h4 {
   border: 1px solid grey;
   font-size: 19px;
   position: relative;
+  transition: all .17s ease-in-out;
 }
 
 .trans-layer {
@@ -158,28 +107,30 @@ h4 {
 .dropdown-menu {
   display: none;
   background-color: #C0C0C0;
-  border-radius: 3px;
   box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.7);
   z-index: 10;
+  top: -5px;
   float: left;
   position: relative;
-  margin: 0 0 10px 8px;
-  width: 215px;
+  margin: 0 0 10px 5px;
+  width: 235px;
   text-align: center;
-  border: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .submenu-arms, .submenu-shoulders, .submenu-chest, .submenu-back, .submenu-core, .submenu-lowerbody {
   display: none;
   background-color: #C0C0C0;
-  border-radius: 3px;
   box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.7);
   z-index: 10;
   position: relative;
+  top: -6px;
   float: left;
   margin-top: 10px;
-  width: 205px;
-  margin: 0 0 10px 8px;
+  width: 235px;
+  margin: 0 0 10px 0;
   text-align: center;
   border: 1px solid black;
 }
@@ -190,14 +141,15 @@ h4 {
 
 
 .bodypart{
-  padding: 10px;
+  padding: 15px;
   border-bottom: 1px solid #e0e0e0;
+  transition: background-color .17s ease-in-out;
 }
 
 .bodypart:hover {
   background-color: #9b9b9b;
   border-radius: 1px;
-  padding: 10px;
+  padding: 15px;
 }
 
 
@@ -210,6 +162,7 @@ h4 {
   border-radius: 1px;
   padding: 15px;
   background-color: #9b9b9b;
+  transition: all .17s ease-in-out;
 }
 
 .dropdown-icon {
@@ -237,7 +190,7 @@ hr {
 
 .subMenuActive {
   background-color: #9b9b9b;
-  padding: 10px;
+  padding: 15px;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5) inset;
   border-radius: 2px;
 }
@@ -250,6 +203,7 @@ hr {
   padding: 20px;
   border: 1px solid grey;
   position: relative;
+  transition: all .17s ease-in-out;
 }
 
 .deleteDay {
@@ -257,12 +211,12 @@ hr {
   float: right;
   margin-top: -28px;
   margin-right: -11px;
+  transition: all .17s ease-in-out;
 }
 
 .deleteDay:hover {
   color: red;
 }
-
 
 .deleteExercise {
   max-height: 15px;
@@ -270,27 +224,26 @@ hr {
   margin-top: -10px;
   margin-right: -13px;
   border-radius: 4px;
-
+  transition: all .17s ease-in-out;
 }
 
 .deleteExercise:hover {
   color: red;
 }
 
-
-
 .details {
   width: 250px;
   height: 250px;
   background-color: #C0C0C0;
+
   float: left;
   z-index: 10;
   position: relative;
   border-radius: 3px;
-  margin-left: 180px;
+  margin-top: 10px;
   display: none;
   border: 1px solid black;
-  box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.7);
+  box-shadow: 20px 20px 30px 20px rgba(0, 0, 0, 0.9);
 }
 
 .detailsActive {
@@ -298,8 +251,13 @@ hr {
 }
 
 input {
-  width: 40px;
-  border-radius: 3px;
+  width: 80%;
+  height: 20px;
+  border-radius: 4px;
+  font-family: 'nunito';
+  padding: 5px;
+  font-size: 18px;
+  margin: 5px 5px;
 }
 
 span {
@@ -324,6 +282,7 @@ form {
   color: white;
   padding: 15px;
   margin: 10px auto;
+  transition: all .17s ease-in-out;
 }
 
 .submit:hover {
@@ -334,6 +293,7 @@ form {
   float: right;
   margin-top: -18px;
   margin-right: -11px;
+  transition: all .17s ease-in-out;
 }
 
 .closeDetails:hover {
@@ -374,4 +334,66 @@ form {
   /* reduce the damage in FF3.0 */
   display:block;
   width:0;
+}
+
+@media only screen and (max-width: 683px) {
+  .day {
+    width: 90%;
+  }
+
+  .newday {
+    width: 90%;
+    margin-bottom: 60px;
+  }
+
+  .newExercise {
+    padding: 8px 5px 8px 10px;
+    width: 200px;
+  }
+
+  .addedExercises {
+    height: 34px;
+    line-height: 25px;
+    padding: 10px 20px 10px 10px;
+  }
+
+  h5 {
+    margin-right: 30px;
+  }
+
+  .dropdown-menu {
+    width: 150px;
+  }
+
+  .submenu-arms, .submenu-shoulders, .submenu-chest, .submenu-back, .submenu-core, .submenu-lowerbody {
+    width: 150px;
+  }
+
+  .exercise {
+    padding: 10px 7px 10px 7px;
+    line-height: 20px;
+    font-size: 18px;
+  }
+
+  .bodypart {
+    font-size: 18px;
+  }
+
+  .exercise:hover {
+    padding: 10px 7px 10px 7px;
+  }
+
+  .speech {
+    position: relative;
+    top: 0;
+    float: none;
+    margin-left: 200px;
+  }
+
+  .speech:before {
+    right: 35px;
+    border-width: 20px 20px 0 0;
+  }
+
+
 }

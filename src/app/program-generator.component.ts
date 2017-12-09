@@ -81,7 +81,6 @@ export class ProgramGeneratorComponent {
     }
     this.calcWeights();
     this.selectedProgram = program;
-
   }
 
   calcWeights() {

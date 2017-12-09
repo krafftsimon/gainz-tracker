@@ -60,15 +60,19 @@ export class TrackProgressComponent implements OnInit {
   ngOnInit(): void {
     if (this.authService.isLoggedIn()) {
       this.loggedIn = true;
-      this.dayService.getDays().subscribe((days: Day[]) => this.days = days,
-                                           error => console.error(error));
+      this.dayService.getDays().subscribe(
+        days => this.days = days,
+        error => console.error(error)
+      );
     }
   }
 
   addNewDay(): void {
     if (this.authService.isLoggedIn()) {
-      this.dayService.addNewDay().subscribe(data => console.log(data.message),
-                                            error => console.error(error));
+      this.dayService.addNewDay().subscribe(
+        data => console.log(data.message),
+        error => console.error(error)
+      );
     } else {
       let exercise = new Exercise('exampleExercise', 2, 10, 185);
       this.days.unshift(new Day(new Date(), exercise));
@@ -77,8 +81,10 @@ export class TrackProgressComponent implements OnInit {
 
   deleteDay(index: number): void {
     if (this.authService.isLoggedIn()) {
-      this.dayService.deleteDay(index).subscribe(data => console.log(data.message),
-                                                  error => console.error(error));
+      this.dayService.deleteDay(index).subscribe(
+        data => console.log(data.message),
+        error => console.error(error)
+      );
     } else {
      this.days.splice(index, 1);
     }
@@ -86,8 +92,10 @@ export class TrackProgressComponent implements OnInit {
 
   deleteExercise(dayIndex: number, exerciseIndex: number): void {
     if (this.authService.isLoggedIn()) {
-      this.dayService.deleteExercise(dayIndex, exerciseIndex).subscribe(data => console.log(data.message),
-                                                                        error => console.error(error));
+      this.dayService.deleteExercise(dayIndex, exerciseIndex).subscribe(
+        data => console.log(data.message),
+        error => console.error(error)
+      );
     } else {
       this.days[dayIndex].exercises.splice(exerciseIndex, 1);
     }
@@ -101,8 +109,10 @@ export class TrackProgressComponent implements OnInit {
                                     Number(sets.value),
                                     Number(reps.value),
                                     Number(weight.value))
-                        .subscribe(data => console.log(data.message),
-                                   error => console.error(error));
+                        .subscribe(
+                          data => console.log(data.message),
+                          error => console.error(error)
+                        );
       } else {
         this.days[index].exercises.push(new Exercise(this.exerciseToBeAdded,
                                                      Number(sets.value),
