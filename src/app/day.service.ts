@@ -8,8 +8,8 @@ import { Day } from './day';
 import { DAYS } from './day-list'
 import { Exercise } from './exercise'
 
-const dURL: string = 'localhost';
-const pURL: string = '35.193.240.128';
+const pURL: string = 'localhost';
+const dURL: string = '35.193.240.128';
 
 @Injectable()
 export class DayService {
@@ -21,7 +21,7 @@ export class DayService {
     this.days.unshift(new Day(new Date(), exercise));
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
-    return this.http.post('http://' + pURL + ':3000/api/users/days' + token, {headers: headers})
+    return this.http.post('http://' + dURL + ':3000/api/users/days' + token, {headers: headers})
       //.map((response: Response) => response.json())
       .catch(error => Observable.throw(error));
   }
@@ -30,14 +30,14 @@ export class DayService {
     this.days.splice(index, 1);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
-    return this.http.patch('http://' + pURL + ':3000/api/users/days' + token, {"index": index}, {headers: headers})
+    return this.http.patch('http://' + dURL + ':3000/api/users/days' + token, {"index": index}, {headers: headers})
       //.map((response: Response) => response.json())
       .catch(error => Observable.throw(error));
   }
 
   getDays() {
     const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
-    return this.http.get('http://' + pURL + ':3000/api/users/days' + token)
+    return this.http.get('http://' + dURL + ':3000/api/users/days' + token)
       .map(data => {
         const days = data['obj'];
         this.days = days;
@@ -50,7 +50,7 @@ export class DayService {
     this.days[index].exercises.push(new Exercise(exerciseName, sets, reps, weight));
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
-    return this.http.post('http://' + pURL + ':3000/api/users/days/exercises' + token, {"index": index, "exerciseName": exerciseName, "sets": sets, "reps": reps, "weight": weight}, {headers: headers})
+    return this.http.post('http://' + dURL + ':3000/api/users/days/exercises' + token, {"index": index, "exerciseName": exerciseName, "sets": sets, "reps": reps, "weight": weight}, {headers: headers})
       //.map((response: Response) => response.json())
       .catch(error => Observable.throw(error));
   }
@@ -59,7 +59,7 @@ export class DayService {
     this.days[dayIndex].exercises.splice(exerciseIndex, 1);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
-    return this.http.patch('http://' + pURL + ':3000/api/users/days/exercises' + token, {"dayIndex": dayIndex, "exerciseIndex": exerciseIndex}, {headers: headers})
+    return this.http.patch('http://' + dURL + ':3000/api/users/days/exercises' + token, {"dayIndex": dayIndex, "exerciseIndex": exerciseIndex}, {headers: headers})
       //.map((response: Response) => response.json())
       .catch(error => Observable.throw(error));
   }

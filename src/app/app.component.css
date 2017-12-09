@@ -125,7 +125,8 @@ h1:hover {
   margin: 0 auto;
   height: 20px;
   border: 1px solid #a8a8a8;
-  width: 100%;
+  max-width: 100%;
+  padding: 5px;
 }
 
 .auth-input:hover {

@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef, OnInit} from '@angular/core';
 import { Chart } from 'chart.js';
 
 import { fadeInRouterAnimation } from './animations/fade-in-router.animation';
+import { fadeInErrorAnimation } from './animations/fade-in-error.animation';
 import { Day } from './day';
 import { DayService } from './day.service';
 
@@ -10,7 +11,7 @@ import { DayService } from './day.service';
   selector: 'graph-page',
   templateUrl: './graph.component.html',
   styleUrls: ['./graph.component.css'],
-  animations: [fadeInRouterAnimation],
+  animations: [fadeInRouterAnimation, fadeInErrorAnimation],
   host: { '[@fadeInRouterAnimation]': 'true',
   '[style.display]': "'block'" }
 })
@@ -18,6 +19,7 @@ import { DayService } from './day.service';
 export class GraphComponent implements OnInit {
 
   days: Day[] = [];
+  notEnoughDataErr: boolean = false;
   benchArray: { rm: number, date: Date }[] = [];
   squatArray: { rm: number, date: Date }[] = [];
   deadliftArray: { rm: number, date: Date }[] = [];
@@ -109,9 +111,6 @@ export class GraphComponent implements OnInit {
   }
 
   generateGraph(exercise: string) {
-    this.lineChartData[0].data = [];
-    this.lineChartData[0].label = exercise;
-    this.lineChartLabels = [];
     let exerciseArray;
     switch (exercise) {
       case 'Bench Press': {
@@ -131,6 +130,14 @@ export class GraphComponent implements OnInit {
         break;
       }
     }
+    if (exerciseArray.length < 4) {
+      this.notEnoughDataErr = true;
+      return;
+    }
+    this.notEnoughDataErr = false;
+    this.lineChartData[0].data = [];
+    this.lineChartData[0].label = exercise;
+    this.lineChartLabels = [];
     for (let point of exerciseArray) {
       let d = new Date(point.date)
       let newDate = this.month[d.getMonth()] + ' ' + d.getDay() + ', ' + d.getFullYear();

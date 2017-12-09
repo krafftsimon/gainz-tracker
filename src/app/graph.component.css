@@ -7,7 +7,7 @@
 
 .graph {
   width: 65%;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 .graph-buttons {
@@ -49,6 +49,18 @@
   flex-wrap: wrap;
 }
 
+.data-error {
+  background-color: #f7554a;
+  left: 40%;
+  color: white;
+  width: 300px;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 5px;
+  font-family: 'nunito';
+  font-size: 14px;
+}
+
 @media only screen and (max-width: 664px) {
   .graph-buttons {
     box-shadow: none;
@@ -57,5 +69,10 @@
 
   .graph-buttons:hover {
     transform: none;
+    background-color: rgba(24, 94, 104, 1);
+  }
+
+  .graph-buttons:active {
+    background-color: rgba(09, 53, 61, 1);
   }
 }
