@@ -140,7 +140,7 @@ export class GraphComponent implements OnInit {
     this.lineChartLabels = [];
     for (let point of exerciseArray) {
       let d = new Date(point.date)
-      let newDate = this.month[d.getMonth()] + ' ' + d.getDay() + ', ' + d.getFullYear();
+      let newDate = this.month[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
       this.lineChartData[0].data.push(point.rm);
       this.lineChartLabels.push(newDate);
     }
