@@ -1,5 +1,4 @@
 import { Component, ViewChild, ElementRef, OnInit} from '@angular/core';
-import { Chart } from 'chart.js';
 
 import { fadeInRouterAnimation } from './animations/fade-in-router.animation';
 import { fadeInErrorAnimation } from './animations/fade-in-error.animation';
@@ -32,32 +31,33 @@ export class GraphComponent implements OnInit {
     {data: [40, 41, 42, 43, 44, 45, 46], label: 'Bench'}
   ];
   public lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public lineChartOptions: any = {responsive: true,
-                                scales: {
-                                  xAxes: [{
-                                    gridLines: {
-                                      lineWidth: 1,
-                                      color: 'rgba(200, 200, 200, 0.5)',
-                                      zeroLineWidth: 2,
-                                      zeroLineColor: 'rgba(255, 255, 255, 1)'
-                                    },
-                                    ticks: {
-                                      fontColor: '#ededed'
-                                    }
-                                  }],
-                                  yAxes: [{
-                                    gridLines: {
-                                      lineWidth: 1,
-                                      color: 'rgba(200, 200, 200, 0.5)',
-                                      zeroLineWidth: 2,
-                                      zeroLineColor: 'rgba(255, 255, 255, 1)'
-                                    },
-                                    ticks: {
-                                      fontColor: '#ededed'
-                                    }
-                                  }]
-                                }
-                              };
+  public lineChartOptions: any = {
+    responsive: true,
+    scales: {
+      xAxes: [{
+        gridLines: {
+          lineWidth: 1,
+          color: 'rgba(200, 200, 200, 0.5)',
+          zeroLineWidth: 2,
+          zeroLineColor: 'rgba(255, 255, 255, 1)'
+        },
+        ticks: {
+          fontColor: '#ededed'
+        }
+      }],
+      yAxes: [{
+        gridLines: {
+          lineWidth: 1,
+          color: 'rgba(200, 200, 200, 0.5)',
+          zeroLineWidth: 2,
+          zeroLineColor: 'rgba(255, 255, 255, 1)'
+        },
+        ticks: {
+          fontColor: '#ededed'
+        }
+      }]
+    }
+  };
 
   public lineChartColors:Array<any> = [
     { // grey
@@ -75,10 +75,11 @@ export class GraphComponent implements OnInit {
   constructor(private dayService: DayService) {}
 
   ngOnInit() {
-    this.dayService.getDays().subscribe((data: Day[]) => this.days = data,
-                                            error => console.error(error),
-                                          () => this.generateGraphData());
-
+    this.dayService.getDays().subscribe(
+      (data: Day[]) => this.days = data,
+      error => console.error(error),
+      () => this.generateGraphData()
+    );
   }
 
   generateGraphData() {

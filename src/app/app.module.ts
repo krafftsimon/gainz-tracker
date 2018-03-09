@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { DropdownModule } from 'ngx-dropdown';
 import { HttpClientModule } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,7 +30,6 @@ import { AuthService } from './auth.service';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    DropdownModule,
     ReactiveFormsModule,
     HttpClientModule,
     ChartsModule,

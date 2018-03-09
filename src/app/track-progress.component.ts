@@ -1,7 +1,5 @@
 import { Component, Input, ElementRef, HostListener, OnInit } from '@angular/core';
 
-import { DropdownModule } from 'ngx-dropdown';
-
 import { fadeInRouterAnimation } from './animations/fade-in-router.animation';
 import { dayListAnimation } from './animations/day-list.animation';
 import { exerciseListAnimation } from './animations/exercise-list.animation';

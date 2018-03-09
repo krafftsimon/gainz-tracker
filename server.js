@@ -6,6 +6,18 @@ const app = express();
 
 const api = require('./server/routes/api');
 
+app.get('*.js', (req, res, next) => {
+  let fileName = req.url.substring(0,7);
+  if (fileName === '/inline' || fileName === '/script') {
+    next();
+  } else {
+    req.url = req.url + '.gz';
+    res.set('Content-Encoding', 'gzip');
+    res.set('Content-Type', 'application/javascript');
+    next();
+  }
+})
+
 // Parsers
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

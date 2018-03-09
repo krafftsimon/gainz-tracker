@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
-import 'rxjs/Rx';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch'
 
 import { Day } from './day';
 import { DAYS } from './day-list'
