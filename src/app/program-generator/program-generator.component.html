@@ -1,0 +1,308 @@
+<div class="container">
+
+  <div class="statsDiv">
+    <h2> Enter your stats... </h2>
+    <div class="liftstats">
+      <h3> Bench press: </h3> <br>
+      <div class="input-container">
+        <input placeholder="Weight" [(ngModel)]="benchWeight" (keydown)="update1rmBench()" type="number">
+        <input placeholder="Repetitions" [(ngModel)]="benchReps" (keydown)="update1rmBench()" type="number">
+      </div>
+      <label> One-Rep Max: {{bench1rm | number: '1.0-0'}} </label>
+    </div>
+    <div class="liftstats">
+      <h3> Squat: </h3> <br>
+      <div class="input-container">
+        <input placeholder="Weight" [(ngModel)]="squatWeight" (keydown)="update1rmSquat()" type="number">
+        <input placeholder="Repetitions" [(ngModel)]="squatReps" (keydown)="update1rmSquat()" type="number">
+      </div>
+      <label> One-Rep Max: {{squat1rm | number: '1.0-0'}} </label>
+    </div>
+    <div class="liftstats">
+      <h3> Deadlift: </h3> <br>
+      <div class="input-container">
+        <input placeholder="Weight" [(ngModel)]="deadliftWeight" (keydown)="update1rmDeadlift()" type="number">
+        <input placeholder="Repetitions" [(ngModel)]="deadliftReps" (keydown)="update1rmDeadlift()" type="number">
+      </div>
+      <label> One-Rep Max: {{deadlift1rm | number: '1.0-0'}} </label>
+    </div>
+    <div class="liftstats">
+      <h3> Overhead Press </h3> <br>
+      <div class="input-container">
+        <input placeholder="Weight" [(ngModel)]="ohpWeight" (keydown)="update1rmOHP()" type="number">
+        <input placeholder="Repetitions" [(ngModel)]="ohpReps" (keydown)="update1rmOHP()" type="number">
+      </div>
+      <label> One-Rep Max: {{ohp1rm | number: '1.0-0'}} </label>
+    </div>
+  </div>
+
+  <div class="programsDiv">
+    <h2>... then select a program. </h2>
+    <ul class="programs">
+      <li *ngFor="let program of programs" (click)="onSelect(program)" [class.selected]="program === selectedProgram">
+        <span class="badge"></span> {{program.name}} <span class="status"> {{program.status}} </span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="scheduleDiv" [style.display]="is531Active()" [@fadeInModalAnimation]="program531State">
+    <h1> Here is your program. </h1>
+
+    <h2> Week 1 </h2>
+    <table id="table1">
+
+      <tr>
+        <th></th>
+        <th>Day 1 <br> Overhead Press</th>
+        <th>Day 2 <br> Deadlift</th>
+        <th>Day 3 <br> Bench</th>
+        <th>Day 4 <br> Squat</th>
+      </tr>
+      <tr class="row">
+        <th rowspan="3" class="test">warm-up</th>
+        <td>{{ohp40 | number: '1.0-0'}} x 5</td>
+        <td>{{deadlift40 | number: '1.0-0'}} x 5</td>
+        <td>{{bench40 | number: '1.0-0'}} x 5</td>
+        <td>{{squat40 | number: '1.0-0'}} x 5</td>
+      </tr>
+      <tr>
+        <td>{{ohp50 | number: '1.0-0'}} x 5</td>
+        <td>{{deadlift50 | number: '1.0-0'}} x 5</td>
+        <td>{{bench50 | number: '1.0-0'}} x 5</td>
+        <td>{{squat50 | number: '1.0-0'}} x 5</td>
+      </tr>
+      <tr>
+        <td>{{ohp60 | number: '1.0-0'}} x 3</td>
+        <td>{{deadlift60 | number: '1.0-0'}} x 3</td>
+        <td>{{bench60 | number: '1.0-0'}} x 3</td>
+        <td>{{squat60 | number: '1.0-0'}} x 3</td>
+      </tr>
+      <tr class="row">
+        <th rowspan="3" class="test">5/3/1</th>
+        <td>{{ohp65 | number: '1.0-0'}} x 5</td>
+        <td>{{deadlift65 | number: '1.0-0'}} x 5</td>
+        <td>{{bench65 | number: '1.0-0'}} x 5</td>
+        <td>{{squat65 | number: '1.0-0'}} x 5</td>
+      </tr>
+      <tr>
+        <td>{{ohp75 | number: '1.0-0'}} x 5</td>
+        <td>{{deadlift75 | number: '1.0-0'}} x 5</td>
+        <td>{{bench75 | number: '1.0-0'}} x 5</td>
+        <td>{{squat75 | number: '1.0-0'}} x 5</td>
+      </tr>
+      <tr>
+        <td>{{ohp85 | number: '1.0-0'}} x 5</td>
+        <td>{{deadlift85 | number: '1.0-0'}} x 5</td>
+        <td>{{bench85 | number: '1.0-0'}} x 5</td>
+        <td>{{squat85 | number: '1.0-0'}} x 5</td>
+      </tr>
+      <tr class="row">
+        <th rowspan="2" class="test">Assistance Exercises <br> "Boring But Big"</th>
+        <td>{{ohp50 | number: '1.0-0'}} x 10</td>
+        <td>{{deadlift50 | number: '1.0-0'}} x 10</td>
+        <td>{{bench50 | number: '1.0-0'}} x 10</td>
+        <td>{{squat50 | number: '1.0-0'}} x 10</td>
+      </tr>
+      <tr>
+        <td>Exercise of your choice.</td>
+        <td>Exercise of your choice.</td>
+        <td>Exercise of your choice.</td>
+        <td>Exercise of your choice.</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h2> Week 2 </h2>
+    <table id="table2">
+      <tr>
+        <th></th>
+        <th>Day 1 <br> Overhead Press</th>
+        <th>Day 2 <br> Deadlift</th>
+        <th>Day 3 <br> Bench</th>
+        <th>Day 4 <br> Squat</th>
+      </tr>
+      <tr class="row">
+        <th rowspan="3" class="test">warm-up</th>
+        <td>{{ohp40 | number: '1.0-0'}} x 5</td>
+        <td>{{deadlift40 | number: '1.0-0'}} x 5</td>
+        <td>{{bench40 | number: '1.0-0'}} x 5</td>
+        <td>{{squat40 | number: '1.0-0'}} x 5</td>
+      </tr>
+      <tr>
+        <td>{{ohp50 | number: '1.0-0'}} x 5</td>
+        <td>{{deadlift50 | number: '1.0-0'}} x 5</td>
+        <td>{{bench50 | number: '1.0-0'}} x 5</td>
+        <td>{{squat50 | number: '1.0-0'}} x 5</td>
+      </tr>
+      <tr>
+        <td>{{ohp60 | number: '1.0-0'}} x 3</td>
+        <td>{{deadlift60 | number: '1.0-0'}} x 3</td>
+        <td>{{bench60 | number: '1.0-0'}} x 3</td>
+        <td>{{squat60 | number: '1.0-0'}} x 3</td>
+      </tr>
+      <tr class="row">
+        <th rowspan="3" class="test">5/3/1</th>
+        <td>{{ohp80 | number: '1.0-0'}} x 3</td>
+        <td>{{deadlift80 | number: '1.0-0'}} x 3</td>
+        <td>{{bench80 | number: '1.0-0'}} x 3</td>
+        <td>{{squat80 | number: '1.0-0'}} x 3</td>
+      </tr>
+      <tr>
+        <td>{{ohp85 | number: '1.0-0'}} x 3</td>
+        <td>{{deadlift85 | number: '1.0-0'}} x 3</td>
+        <td>{{bench85 | number: '1.0-0'}} x 3</td>
+        <td>{{squat85 | number: '1.0-0'}} x 3</td>
+      </tr>
+      <tr>
+        <td>{{ohp90 | number: '1.0-0'}} x 3</td>
+        <td>{{deadlift90 | number: '1.0-0'}} x 3</td>
+        <td>{{bench90 | number: '1.0-0'}} x 3</td>
+        <td>{{squat90 | number: '1.0-0'}} x 3</td>
+      </tr>
+      <tr class="row">
+        <th rowspan="2" class="test">Assistance Exercises <br> "Boring But Big"</th>
+        <td>{{ohp50 | number: '1.0-0'}} x 10</td>
+        <td>{{deadlift50 | number: '1.0-0'}} x 10</td>
+        <td>{{bench50 | number: '1.0-0'}} x 10</td>
+        <td>{{squat50 | number: '1.0-0'}} x 10</td>
+      </tr>
+      <tr>
+        <td>Exercise of your choice.</td>
+        <td>Exercise of your choice.</td>
+        <td>Exercise of your choice.</td>
+        <td>Exercise of your choice.</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h2> Week 3 </h2>
+    <table id="table3">
+      <tr>
+        <th></th>
+        <th>Day 1 <br> Overhead Press</th>
+        <th>Day 2 <br> Deadlift</th>
+        <th>Day 3 <br> Bench</th>
+        <th>Day 4 <br> Squat</th>
+      </tr>
+      <tr class="row">
+        <th rowspan="3" class="test">warm-up</th>
+        <td>{{ohp40 | number: '1.0-0'}} x 5</td>
+        <td>{{deadlift40 | number: '1.0-0'}} x 5</td>
+        <td>{{bench40 | number: '1.0-0'}} x 5</td>
+        <td>{{squat40 | number: '1.0-0'}} x 5</td>
+      </tr>
+      <tr>
+        <td>{{ohp50 | number: '1.0-0'}} x 5</td>
+        <td>{{deadlift50 | number: '1.0-0'}} x 5</td>
+        <td>{{bench50 | number: '1.0-0'}} x 5</td>
+        <td>{{squat50 | number: '1.0-0'}} x 5</td>
+      </tr>
+      <tr>
+        <td>{{ohp60 | number: '1.0-0'}} x 3</td>
+        <td>{{deadlift60 | number: '1.0-0'}} x 3</td>
+        <td>{{bench60 | number: '1.0-0'}} x 3</td>
+        <td>{{squat60 | number: '1.0-0'}} x 3</td>
+      </tr>
+      <tr class="row">
+        <th rowspan="3" class="test">5/3/1</th>
+        <td>{{ohp75 | number: '1.0-0'}} x 5</td>
+        <td>{{deadlift75 | number: '1.0-0'}} x 5</td>
+        <td>{{bench75 | number: '1.0-0'}} x 5</td>
+        <td>{{squat75 | number: '1.0-0'}} x 5</td>
+      </tr>
+      <tr>
+        <td>{{ohp85 | number: '1.0-0'}} x 3</td>
+        <td>{{deadlift85 | number: '1.0-0'}} x 3</td>
+        <td>{{bench85 | number: '1.0-0'}} x 3</td>
+        <td>{{squat85 | number: '1.0-0'}} x 3</td>
+      </tr>
+      <tr>
+        <td>{{ohp95 | number: '1.0-0'}} x 1</td>
+        <td>{{deadlift95 | number: '1.0-0'}} x 1</td>
+        <td>{{bench95 | number: '1.0-0'}} x 1</td>
+        <td>{{squat95 | number: '1.0-0'}} x 1</td>
+      </tr>
+      <tr class="row">
+        <th rowspan="2" class="test">Assistance Exercises <br> "Boring But Big"</th>
+        <td>{{ohp50 | number: '1.0-0'}} x 10</td>
+        <td>{{deadlift50 | number: '1.0-0'}} x 10</td>
+        <td>{{bench50 | number: '1.0-0'}} x 10</td>
+        <td>{{squat50 | number: '1.0-0'}} x 10</td>
+      </tr>
+      <tr>
+        <td>Exercise of your choice.</td>
+        <td>Exercise of your choice.</td>
+        <td>Exercise of your choice.</td>
+        <td>Exercise of your choice.</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h2> Week 4 </h2>
+    <table id="table4">
+      <tr>
+        <th></th>
+        <th>Day 1 <br> Overhead Press</th>
+        <th>Day 2 <br> Deadlift</th>
+        <th>Day 3 <br> Bench</th>
+        <th>Day 4 <br> Squat</th>
+      </tr>
+      <tr class="row">
+        <th rowspan="3" class="test">warm-up</th>
+        <td>{{ohp40 | number: '1.0-0'}} x 5</td>
+        <td>{{deadlift40 | number: '1.0-0'}} x 5</td>
+        <td>{{bench40 | number: '1.0-0'}} x 5</td>
+        <td>{{squat40 | number: '1.0-0'}} x 5</td>
+      </tr>
+      <tr>
+        <td>{{ohp50 | number: '1.0-0'}} x 5</td>
+        <td>{{deadlift50 | number: '1.0-0'}} x 5</td>
+        <td>{{bench50 | number: '1.0-0'}} x 5</td>
+        <td>{{squat50 | number: '1.0-0'}} x 5</td>
+      </tr>
+      <tr>
+        <td>{{ohp60 | number: '1.0-0'}} x 3</td>
+        <td>{{deadlift60 | number: '1.0-0'}} x 3</td>
+        <td>{{bench60 | number: '1.0-0'}} x 3</td>
+        <td>{{squat60 | number: '1.0-0'}} x 3</td>
+      </tr>
+      <tr class="row">
+        <th rowspan="3" class="test">5/3/1</th>
+        <td>{{ohp40 | number: '1.0-0'}} x 5</td>
+        <td>{{deadlift40 | number: '1.0-0'}} x 5</td>
+        <td>{{bench40 | number: '1.0-0'}} x 5</td>
+        <td>{{squat40 | number: '1.0-0'}} x 5</td>
+      </tr>
+      <tr>
+        <td>{{ohp50 | number: '1.0-0'}} x 5</td>
+        <td>{{deadlift50 | number: '1.0-0'}} x 5</td>
+        <td>{{bench50 | number: '1.0-0'}} x 5</td>
+        <td>{{squat50 | number: '1.0-0'}} x 5</td>
+      </tr>
+      <tr>
+        <td>{{ohp60 | number: '1.0-0'}} x 5</td>
+        <td>{{deadlift60 | number: '1.0-0'}} x 5</td>
+        <td>{{bench60 | number: '1.0-0'}} x 5</td>
+        <td>{{squat60 | number: '1.0-0'}} x 5</td>
+      </tr>
+      <tr class="row">
+        <th rowspan="2" class="test">Assistance Exercises <br> "Boring But Big"</th>
+        <td>{{ohp50 | number: '1.0-0'}} x 10</td>
+        <td>{{deadlift50 | number: '1.0-0'}} x 10</td>
+        <td>{{bench50 | number: '1.0-0'}} x 10</td>
+        <td>{{squat50 | number: '1.0-0'}} x 10</td>
+      </tr>
+      <tr>
+        <td>Exercise of your choice.</td>
+        <td>Exercise of your choice.</td>
+        <td>Exercise of your choice.</td>
+        <td>Exercise of your choice.</td>
+      </tr>
+    </table>
+
+  </div>
+
+<div>

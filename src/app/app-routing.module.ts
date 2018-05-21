@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './home.component';
-import { ProgramGeneratorComponent } from './program-generator.component';
-import { TrackProgressComponent } from './track-progress.component';
-import { GraphComponent } from './graph.component'
+import { HomeComponent } from './home/home.component';
+import { ProgramGeneratorComponent } from './program-generator/program-generator.component';
+import { TrackProgressComponent } from './track-progress/track-progress.component';
+import { GraphComponent } from './graph/graph.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

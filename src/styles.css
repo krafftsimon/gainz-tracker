@@ -1,14 +1,14 @@
-
 html {
   height: 100%;
   width: 100%;
-  background-image: url('/assets/background5.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  font-size: 100%;
   margin: 0;
   padding: 0;
+  --main-color: #ff9000;
+  --secondary-color: #ffcc00;
+  --tertiary-color: #ff0048;
+  --background-color: #09111F;
+  font-family: 'Nunito';
+  background-color: var(--background-color);
 }
 
 body {

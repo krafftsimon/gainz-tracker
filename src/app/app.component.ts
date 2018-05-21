@@ -2,17 +2,16 @@ import { Component, HostListener, ViewChild, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { fadeInModalAnimation } from './animations/fade-in-modal.animation';
 import { slideInModalContentAnimation } from './animations/slide-in-modal-content.animation';
 import { slideModalFormAnimation } from './animations/slide-modal-form.animation';
-import { User } from './user';
-import { AuthService } from './auth.service';
+import { User } from './models/user';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  animations: [fadeInModalAnimation, slideInModalContentAnimation, slideModalFormAnimation]
+  animations: [slideInModalContentAnimation, slideModalFormAnimation]
 })
 
 export class AppComponent implements OnInit {
@@ -20,9 +19,9 @@ export class AppComponent implements OnInit {
   modalActive: boolean = false;
   loginFormActive: boolean = true;
   registerFormActive: boolean = false;
-  modalState: string = 'out';
+  modalContentState: string = 'out';
   loginFormState: string = 'in';
-  registerFormState: string = 'out';
+  registerFormState: string = 'out-right';
   myLoginForm: FormGroup;
   myRegisterForm: FormGroup;
   errorMsg: string = '';
@@ -31,21 +30,34 @@ export class AppComponent implements OnInit {
 
   @HostListener('document:click', ['$event'])
   onClick(event) {
-    var clickTarget = event.target.attributes.id;
+    let clickTarget = event.target.attributes.id;
     if (clickTarget !== undefined) {
       if (clickTarget.nodeValue === "login-modal") {
         this.modalActive = false;
-        this.modalState = 'out';
+        this.modalContentState = 'out';
+        this.myRegisterForm.reset();
+        this.myLoginForm.reset();
       }
     }
   }
 
   ngOnInit() {
-    var emailVal = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let emailVal = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.myRegisterForm = new FormGroup({
-      username: new FormControl(null, [Validators.required, Validators.minLength(4)], this.isUsernameUnique.bind(this)),
-      password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
-      email: new FormControl(null, [Validators.required, Validators.pattern(emailVal)], this.isEmailUnique.bind(this))
+      username: new FormControl(
+        null,
+        [Validators.required, Validators.minLength(4)],
+        this.isUsernameUnique.bind(this)
+      ),
+      password: new FormControl(
+        null,
+        [Validators.required, Validators.minLength(8)]
+      ),
+      email: new FormControl(
+        null,
+        [Validators.required, Validators.pattern(emailVal)],
+        this.isEmailUnique.bind(this)
+      )
     })
     this.myLoginForm = new FormGroup({
       username: new FormControl(null, Validators.required),
@@ -54,28 +66,36 @@ export class AppComponent implements OnInit {
   }
 
   onSubmitLogin(): void {
-    const user = new User(this.myLoginForm.value.username,
-                          this.myLoginForm.value.password);
-    this.authService.login(user).subscribe(data => { localStorage.setItem('token', data.token);
-                                                     localStorage.setItem('userId', data.userId);
-                                                     console.log(data);
-                                                     window.location.reload();
-                                                     this.myLoginForm.reset();
-                                                     this.modalActive = false;
-                                                     this.modalState = 'out';},
-                                            error => {console.error(error);
-                                                      this.errorMsg = error.error.message;});
+    const user = new User(
+      this.myLoginForm.value.username,
+      this.myLoginForm.value.password
+    );
+    this.authService.login(user)
+    .subscribe(data => {
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('userId', data.userId);
+      window.location.reload();
+      this.myLoginForm.reset();
+      this.modalActive = false;
+    }, error => {
+      console.error(error);
+      this.errorMsg = error.error.message;
+    });
   }
 
   onSubmitRegister(): void {
-    const user = new User(this.myRegisterForm.value.username,
-                          this.myRegisterForm.value.password,
-                          this.myRegisterForm.value.email);
-    this.authService.register(user).subscribe(data => console.log(data),
-                                              error => console.error(error));
+    const user = new User(
+      this.myRegisterForm.value.username,
+      this.myRegisterForm.value.password,
+      this.myRegisterForm.value.email
+    );
+    this.authService.register(user)
+    .subscribe(
+      data => console.log(data),
+      error => console.error(error)
+    );
     this.myRegisterForm.reset();
     this.modalActive = false;
-    this.modalState = 'out';
   }
 
   isLoggedIn() {
@@ -87,11 +107,37 @@ export class AppComponent implements OnInit {
     window.location.reload();
   }
 
+  onLogin() {
+    this.modalActive = true; 
+    setTimeout(() => {
+      this.modalContentState = 'in';
+    }, 10);
+    this.loginFormActive = true;
+    this.registerFormActive = false;
+    this.registerFormState = 'out-right';
+    this.loginFormState = 'in';
+  }
+
+  onRegister() {
+    this.modalActive = true; 
+    setTimeout(() => {
+      this.modalContentState = 'in';
+    }, 10);
+    this.loginFormActive = false;
+    this.registerFormActive = true;
+    this.registerFormState = 'in';
+    this.loginFormState = 'out-left';
+  }
+
   isUsernameUnique(control: FormControl) {
     const q = new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.authService.isUsernameUnique(control.value).subscribe(() => { resolve(null);},
-                                                                    () => { resolve({ 'isUsernameUnique': true });});
+        this.authService.isUsernameUnique(control.value)
+        .subscribe(() => { 
+          resolve(null);
+        }, () => { 
+          resolve({ 'isUsernameUnique': true });
+        });
       }, 100);
     });
     return q;
@@ -100,35 +146,15 @@ export class AppComponent implements OnInit {
   isEmailUnique(control: FormControl) {
     const q = new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.authService.isEmailUnique(control.value).subscribe(() => { resolve(null);},
-                                                                    () => { resolve({ 'isEmailUnique': true });});
+        this.authService.isEmailUnique(control.value)
+        .subscribe(() => { 
+          resolve(null);
+        }, () => { 
+          resolve({ 'isEmailUnique': true });
+        });
       }, 100);
     });
     return q;
-  }
-
-  isModalActive(): string {
-    if(this.modalActive) {
-      return "block";
-    } else {
-      return "none";
-    }
-  }
-
-  isLoginFormActive(): string {
-    if(this.loginFormActive) {
-      return "block";
-    } else {
-      return "none";
-    }
-  }
-
-  isRegisterFormActive(): string {
-    if(this.registerFormActive) {
-      return "block";
-    } else {
-      return "none";
-    }
   }
 
   isErrorMsgActive(): string {
@@ -137,5 +163,29 @@ export class AppComponent implements OnInit {
     } else {
       return "none";
     }
+  }
+
+  toRegisterFromLogin(): void {
+    this.loginFormState = 'out-left'; 
+    setTimeout(() => {
+      this.registerFormActive = true; 
+      this.loginFormActive = false; 
+      this.myLoginForm.reset(); 
+    }, 100);
+    setTimeout(() => {
+      this.registerFormState = 'in';
+    }, 200);
+  }
+
+  toLoginFromRegister(): void {
+    this.registerFormState = 'out-right'; 
+    setTimeout(() => {
+      this.loginFormActive = true; 
+      this.registerFormActive = false; 
+      this.myRegisterForm.reset(); 
+    }, 100);
+    setTimeout(() => {
+      this.loginFormState = 'in';
+    }, 200);
   }
 }

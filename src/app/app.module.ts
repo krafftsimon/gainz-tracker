@@ -9,14 +9,14 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
 
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home.component';
-import { ProgramGeneratorComponent } from './program-generator.component';
-import { TrackProgressComponent } from './track-progress.component';
+import { HomeComponent } from './home/home.component';
+import { ProgramGeneratorComponent } from './program-generator/program-generator.component';
+import { TrackProgressComponent } from './track-progress/track-progress.component';
 import { AppRoutingModule } from './app-routing.module';
-import { GraphComponent } from './graph.component';
+import { GraphComponent } from './graph/graph.component';
 
-import { DayService } from './day.service';
-import { AuthService } from './auth.service';
+import { DayService } from './services/day.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [

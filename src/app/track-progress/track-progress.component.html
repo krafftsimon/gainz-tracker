@@ -1,0 +1,91 @@
+<p *ngIf="!loggedIn" class="speech"> Login to save progress </p>
+<div class="newday" (click)="addNewDay()"> <fa name="plus"></fa>Add a new day</div>
+<div *ngFor="let day of days; let i = index" class="day" [@dayListAnimation]="''">
+  <h3> {{day.date | date}} </h3>
+  <div class="deleteDay" (click)="deleteDay(i)"><fa name="times"></fa></div>
+  <div *ngFor="let exercise of days[i].exercises; let j = index" class="addedExercises" [@exerciseListAnimation]="''">
+    <div class="deleteExercise" (click)="deleteExercise(i, j)"><fa name="times"></fa></div>
+     {{exercise.name}}: <span>{{exercise.sets}}</span> set(s) of <span>{{exercise.reps}}</span> rep(s) at <span>{{exercise.weight}}</span> lbs
+  </div>
+  <div class="newExercise" (click)="toggleMenu(i)">
+    <fa name="bars" class="dropdown-icon"></fa>
+    Add new exercise
+    <div class="dropdown-menu" [@dropdownMenuAnimation]="''">
+      <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-arms')"> 
+        Arms >
+        <div class="submenu-arms">
+          <div class="exercise" (click)="openDetails(i, 'Standing Curls')"> Standing Curls </div>
+          <div class="exercise" (click)="openDetails(i, 'Hammer Curls')"> Hammer Curls </div>
+          <div class="exercise" (click)="openDetails(i, 'Spider Curls')"> Spider Curls </div>
+          <div class="exercise" (click)="openDetails(i, 'Seated Curls')"> Seated Curls </div>
+        </div> 
+      </div>
+      <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-shoulders')"> 
+        Shoulders >
+        <div class="submenu-shoulders">
+          <div class="exercise" (click)="openDetails(i, 'OHP')"> OHP </div>
+          <div class="exercise" (click)="openDetails(i, 'Dumbbell Curls')"> Dumbbell Curls </div>
+          <div class="exercise" (click)="openDetails(i, 'Push Press')"> Push Press</div>
+          <div class="exercise" (click)="openDetails(i, 'Lateral Raises')"> Lateral Raises </div>
+          <div class="exercise" (click)="openDetails(i, 'Face Pulls')"> Face Pulls </div>
+        </div>
+      </div>
+      <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-chest')"> 
+        Chest > 
+        <div class="submenu-chest">
+          <div class="exercise" (click)="openDetails(i, 'Bench Press')"> Bench Press </div>
+          <div class="exercise" (click)="openDetails(i, 'Incline Bench Press')"> Incline Bench Press </div>
+          <div class="exercise" (click)="openDetails(i, 'Decline Bench Press')"> Decline Bench Press </div>
+        </div>
+      </div>
+      <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-back')"> 
+        Back > 
+        <div class="submenu-back">
+          <div class="exercise" (click)="openDetails(i, 'Pull Up')"> Pull Ups </div>
+          <div class="exercise" (click)="openDetails(i, 'Chin Ups')"> Chin Ups </div>
+          <div class="exercise" (click)="openDetails(i, 'Lateral Pulldown')"> Lateral Pulldown </div>
+          <div class="exercise" (click)="openDetails(i, 'Barbell Rows')"> Barbell Rows </div>
+          <div class="exercise" (click)="openDetails(i, 'Dumbbel Rows')"> Dumbbel Rows </div>
+        </div>
+      </div>
+      <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-core')"> 
+        Core > 
+        <div class="submenu-core">
+          <div class="exercise" (click)="openDetails(i, 'Ab Wheel')"> Ab Wheel </div>
+          <div class="exercise" (click)="openDetails(i, 'Crunches')"> Crunches </div>
+          <div class="exercise" (click)="openDetails(i, 'Planks')"> Planks </div>
+          <div class="exercise" (click)="openDetails(i, 'Side Planks')"> Side Planks </div>
+        </div>
+      </div>
+      <div class="bodypart" (click)="toggleSubMenu(i, 'submenu-lowerbody')"> 
+        Lower Body > 
+        <div class="submenu-lowerbody">
+          <div class="exercise" (click)="openDetails(i, 'Squats')"> Squats </div>
+          <div class="exercise" (click)="openDetails(i, 'Deadlifts')"> Deadlifts </div>
+          <div class="exercise" (click)="openDetails(i, 'Leg press')"> Leg press </div>
+          <div class="exercise" (click)="openDetails(i, 'Hamstring Curls')"> Hamstring Curls </div>
+          <div class="exercise" (click)="openDetails(i, 'Leg curls')"> Leg curls </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+  <div class="details">
+    <form>
+      <div class="closeDetails" (click)="closeDetailsMenu()"> <fa name="times"></fa> </div>
+      <h3>New Exercise</h3>
+      <div class="form-group">
+        <label> Number of sets </label>
+        <input type="number" placeholder="Sets" #sets>
+      </div>
+      <div class="form-group">
+        <label> Repetitions per set </label>
+        <input type="number" placeholder="Reps" #reps>
+      </div>
+      <div class="form-group">
+        <label> Weight lifted </label>
+        <input type="number" placeholder="Weight" #weight>
+      </div>
+      <button class="submit" (click)="submitDetails(i, sets, reps, weight)"> Submit </button>
+    </form>
+  </div>
+</div>

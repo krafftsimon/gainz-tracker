@@ -1,0 +1,365 @@
+
+.container {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 10px 10px;
+  clear: both;
+  font-family: 'nunito';
+}
+
+.newday {
+  margin: 200px auto 100px auto;
+  padding: 15px;
+  max-width: 800px;
+  border-radius: 10px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 30px;
+  border: 3px solid var(--tertiary-color);
+  color: white;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.newday:hover {
+  background-color: var(--tertiary-color);
+}
+
+.newday:active {
+  background-color: var(--tertiary-color);
+  box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.5) inset;
+}
+
+
+.day {
+  margin: 0 auto 40px auto;
+  padding: 20px 30px;
+  max-width: 800px;
+  border-radius: 10px;
+  font-size: 20px;
+  box-sizing: border-box;
+  background-color: #0c1a33;
+  position: relative;
+  box-shadow: 5px 5px 60px -10px rgba(0, 0, 0, 1);
+}
+
+h3 {
+  margin: 0 0 20px 0;
+  color: var(--main-color);
+  font-weight: 400;
+  font-size: 30px;
+}
+
+h4 {
+  padding: 0;
+  font-weight: normal;
+  margin: 0;
+  position: absolute;
+}
+
+.newExercise {
+  display: inline-block;
+  margin: 5px 0;
+  padding: 10px 15px;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  position: relative;
+  transition: background-color .2s;
+  cursor: pointer;
+  background: linear-gradient(to right, var(--main-color), var(--tertiary-color));
+}
+
+.newExercise:hover {
+  background: linear-gradient(to left, var(--main-color), var(--tertiary-color));
+  color: white;
+}
+
+.newExercise:active {
+  background: linear-gradient(to left, var(--main-color), var(--tertiary-color));
+  color: white;
+}
+
+.dropdown-menu {
+  display: none;
+  z-index: 10;
+  top: 50px;
+  left: 0px;
+  position: absolute;
+  text-align: center;
+  background-color: var(--background-color);
+  border: 2px solid var(--main-color);
+  border-radius: 10px;
+  width: 213px;
+}
+
+.submenu-arms, .submenu-shoulders, .submenu-chest, .submenu-back, .submenu-core, .submenu-lowerbody {
+  display: none;
+  background-color: var(--background-color);
+  border: 2px solid var(--main-color);
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 104%;
+  text-align: center;
+  border-radius: 10px;
+  width: 213px;
+}
+
+.subMenuActive {
+  background-color: var(--main-color);
+  border-radius: 6px;
+}
+
+.openMenu, .openSubMenu {
+  display: block;
+}
+
+.bodypart {
+  padding: 15px;
+  transition: background-color 0.2s;
+}
+
+.bodypart:hover {
+  border-radius: 6px;
+  background-color: var(--main-color);
+}
+
+.exercise{
+  padding: 15px;
+  transition: background-color 0.2s;
+}
+
+.exercise:hover {
+  border-radius: 6px;
+  background-color: var(--main-color);
+}
+
+.dropdown-icon {
+    margin-right: 7px;
+}
+
+hr {
+  margin: 1px 0;
+}
+
+.exercise:active {
+  background-color: #828282;
+  padding: 15px;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5) inset;
+}
+
+.menuContainer {
+}
+
+.menuActive {
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5) inset;
+}
+
+.addedExercises {
+  border-radius: 10px;
+  margin: 15px 0 25px 0;
+  padding: 10px 20px;
+  font-weight: 400;
+  font-size: 22px;
+  color: white;
+  position: relative;
+  background-color: #262963;
+}
+
+.addedExercises span {
+  color: var(--main-color);
+}
+
+.deleteDay {
+  top: 0;
+  right: 8px;
+  color: var(--tertiary-color);
+  position: absolute;
+  transition: color .17s ease-in-out;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.deleteDay:hover {
+  color: red;
+}
+
+.deleteExercise {
+  max-height: 15px;
+  float: right;
+  margin-top: -10px;
+  margin-right: -13px;
+  border-radius: 4px;
+  transition: all .17s ease-in-out;
+  cursor: pointer;
+  color: var(--tertiary-color);
+}
+
+.deleteExercise:hover {
+  color: red;
+}
+
+.details {
+  width: 300px;
+  background-color: var(--background-color);
+  z-index: 10;
+  position: absolute;
+  border-radius: 10px;
+  display: none;
+  box-shadow: 20px 20px 50px 1px rgba(0, 0, 0, 0.9);
+  padding: 20px 30px;
+  border: 3px solid var(--main-color);
+}
+
+.detailsActive {
+  display: block;
+}
+
+.form-group {
+  margin: 20px auto;
+}
+
+input {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  font-family: 'nunito';
+  padding: 10px 20px;
+  font-size: 20px;
+  margin: 5px 0 25px 0;
+  box-sizing: border-box;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+  padding: 7px 17px;
+  border: 3px solid #4481ed
+}
+
+span {
+  text-align: center;
+  line-height: 20px;
+  margin-bottom: 40px;
+}
+
+label {
+  color: #e2e2e2;
+  margin: 5px 0;
+}
+
+.submit {
+  background: linear-gradient(to right, var(--main-color), var(--tertiary-color));
+  border-radius: 10px;
+  border: none;
+  color: white;
+  padding: 15px 50px;
+  margin: 40px auto 15px auto;
+  display: block;
+  font-size: 20px;
+  font-family: 'nunito';
+}
+
+.submit:hover {
+  background: linear-gradient(to left, var(--main-color), var(--tertiary-color));
+}
+
+.submit:focus {
+  outline: 0;
+}
+
+.closeDetails {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  transition: color .2s;
+  color: var(--tertiary-color);
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.closeDetails:hover {
+  color: red;
+}
+
+.speech {
+  top: 80px;
+  right: 22%;
+  font-size: 18px;
+  font-weight: 400;
+  color: white;
+  position: absolute;
+  width: 120px;
+  padding: 10px;
+  background: linear-gradient(#edad00, var(--main-color));
+  border-radius: 10px;
+}
+
+.speech:before {
+  content: "";
+  position: absolute;
+  top: -20px; /* value = - border-top-width - border-bottom-width */
+  right: 80px; /* controls horizontal position */
+  bottom: auto;
+  left: auto;
+  border-width: 20px 0 0 20px; /* vary these values to change the angle of the vertex */
+  border-color: transparent #edad00;
+  border-style: solid;
+  /* reduce the damage in FF3.0 */
+  display:block;
+  width:0;
+}
+
+@media only screen and (max-width: 683px) {
+  .newday {
+    width: 90%;
+    margin-bottom: 60px;
+  }
+
+  .newExercise {
+    padding: 8px 5px 8px 10px;
+    width: 200px;
+  }
+
+  h5 {
+    margin-right: 30px;
+  }
+
+  .dropdown-menu {
+    width: 150px;
+  }
+
+  .submenu-arms, .submenu-shoulders, .submenu-chest, .submenu-back, .submenu-core, .submenu-lowerbody {
+    width: 150px;
+  }
+
+  .exercise {
+    padding: 10px 7px 10px 7px;
+    line-height: 20px;
+    font-size: 18px;
+  }
+
+  .bodypart {
+    font-size: 18px;
+  }
+
+  .exercise:hover {
+    padding: 10px 7px 10px 7px;
+  }
+
+  .speech {
+    position: relative;
+    top: 0;
+    float: none;
+    margin-left: 200px;
+  }
+
+  .speech:before {
+    right: 35px;
+    border-width: 20px 20px 0 0;
+  }
+
+
+}

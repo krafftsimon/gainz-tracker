@@ -1,0 +1,211 @@
+
+.selected {
+  background-color: rgba(214, 214, 214, 0.7) !important;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5) inset !important;
+  color: black;
+  transform: translateX(20px);
+}
+
+.status {
+  font-size: 12px;
+  color: #C0C0C0C0;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'nunito';
+}
+
+.programs {
+  margin: 0 auto;
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.programs li {
+  margin: 0 auto;
+  width: 80%;
+  cursor: pointer;
+  position: relative;
+  padding: 15px 0 15px 20px;
+  background-color: rgba(19, 73, 81, 0.7);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.7);
+  text-align: left;
+  border-bottom: 1px solid #071b1e;
+  border-left: 1px solid #071b1e;
+  border-right: 1px solid #071b1e;
+  transition: all .17s ease-in-out;
+}
+
+.programs li:first-child{
+  border-radius: 5px 5px 0 0;
+  border-top: 1px solid #071b1e;
+}
+
+.programs li:last-child{
+  border-radius: 0 0 5px 5px;
+}
+
+.programs li:active {
+  background-color: #DDD;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5) inset;
+}
+
+
+.programs li:hover {
+  color: black;
+  background-color: rgba(214, 214, 214, 0.7);
+  transform: translateX(20px);
+}
+
+.programs .text {
+  position: relative;
+  top: -3px;
+}
+
+.statsDiv {
+  color: white;
+  width: 40%;
+  margin: 20px 20px;
+  border-radius: 2px;
+  display: inline-block;
+  vertical-align: top;
+  min-height: 490px;
+}
+
+.programsDiv {
+  border-radius: 2px;
+  margin: 20px 20px;
+  display: inline-block;
+  width: 40%;
+  color: white;
+  min-height: 490px;
+  vertical-align: top;
+}
+
+input {
+  width: 45%;
+  height: 30px;
+  border-radius: 4px;
+  font-family: 'nunito';
+  padding: 5px;
+  font-size: 18px;
+  margin: 5px 5px;
+}
+
+label {
+  font-family: 'nunito';
+  font-size: 18px;
+}
+
+h3 {
+  margin-top: 0px;
+  margin-bottom: -20px;
+}
+
+.input-container {
+  display: flex;
+}
+
+.liftstats {
+  width: 90%;
+  margin: 20px auto;
+  padding: 5px;
+  text-align: left;
+  background-color: rgba(19, 73, 81, 0.7);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+  padding: 10px 10px;
+  transition: all .17s ease-in-out;
+  border: 1px solid black;
+}
+
+.liftstats:hover {
+  transform: scale(1.04);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7);
+}
+
+.scheduleDiv {
+  border-radius: 2px;
+  margin: 20px auto;
+  display: inline-block;
+  width: 95%;
+  color: white;
+  vertical-align: middle;
+}
+
+table {
+  margin: 10px;
+  display: inline-block;
+  border-collapse: collapse;
+  background-color: rgba(49, 49, 49, 0.8);
+  box-shadow: 4px 4px 15px 5px rgba(0, 0, 0, 1);
+  border-radius: 4px;
+}
+
+table:hover {
+}
+
+.test {
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  border-right: 1px solid grey;
+}
+
+.test:last-child {
+  border-bottom: none;
+}
+
+th {
+  padding: 10px;
+  border-bottom: 1px solid grey;
+}
+
+td {
+  padding: 10px;
+  width: 150px;
+}
+
+tr {
+}
+
+tr:hover {
+}
+
+tr:last-child {
+  border: none;
+}
+
+.row {
+  border-top: 1px solid grey;
+}
+
+.row .test {
+  border-bottom: none;
+}
+
+tr:first-child, tr:nth-child(4), tr:nth-child(7) {
+
+}
+
+hr {
+  margin: 50px;
+}
+
+@media only screen and (max-width: 750px) {
+  .day {
+    width: 90%;
+  }
+
+  .statsDiv {
+    width: 80%;
+    margin: 20px 0;
+  }
+
+  .programsDiv {
+    width: 80%;
+    margin: 20px 0;
+  }
+}
