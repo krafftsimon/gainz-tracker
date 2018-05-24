@@ -36,20 +36,20 @@ export class TrackProgressComponent implements OnInit {
   onClick(event) {
     let test = document.getElementsByClassName('bodypart');
     let targ = event.target.attributes.class.nodeValue;
-    let openedMenus = document.getElementsByClassName("openMenu");
-    let openedSubMenus = document.getElementsByClassName("openSubMenu");
+    let openedMenus = document.getElementsByClassName("open-menu");
+    let openedSubMenus = document.getElementsByClassName("open-sub-menu");
     if (openedMenus.length > 0
       && targ !== "bodypart"
-      && targ !== "newExercise menuActive"
-      && targ !== "bodypart subMenuActive"
-      && targ !== "newExercise"
+      && targ !== "new-exercise menu-active"
+      && targ !== "bodypart sub-menu-active"
+      && targ !== "new-exercise"
       && targ !== "trans-layer"){
 
-      document.getElementsByClassName('openMenu')[0].classList.remove('openMenu');
-      document.getElementsByClassName('menuActive')[0].classList.remove('menuActive');
+      document.getElementsByClassName('open-menu')[0].classList.remove('open-menu');
+      document.getElementsByClassName('menu-active')[0].classList.remove('menu-active');
       if (openedSubMenus.length > 0) {
-        document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
-        document.getElementsByClassName('subMenuActive')[0].classList.remove('subMenuActive');
+        document.getElementsByClassName('open-sub-menu')[0].classList.remove('open-sub-menu');
+        document.getElementsByClassName('sub-menu-active')[0].classList.remove('sub-menu-active');
       }
     }
   }
@@ -117,7 +117,7 @@ export class TrackProgressComponent implements OnInit {
                                                      Number(reps.value),
                                                      Number(weight.value)));
       }
-      document.getElementsByClassName('details')[index].classList.remove('detailsActive');
+      document.getElementsByClassName('details')[index].classList.remove('details-active');
       sets.value = null;
       reps.value = null;
       weight.value = null;
@@ -125,61 +125,60 @@ export class TrackProgressComponent implements OnInit {
   }
 
   closeDetailsMenu(): void {
-    document.getElementsByClassName('detailsActive')[0].classList.remove('detailsActive');
+    document.getElementsByClassName('details-active')[0].classList.remove('details-active');
   }
 
   openDetails(index: number, exerciseName: string): void {
     this.exerciseToBeAdded = exerciseName;
-    document.getElementsByClassName('subMenuActive')[0].classList.remove('subMenuActive');
-    document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
-    document.getElementsByClassName('details')[index].classList.toggle('detailsActive');
+    document.getElementsByClassName('sub-menu-active')[0].classList.remove('sub-menu-active');
+    document.getElementsByClassName('open-sub-menu')[0].classList.remove('open-sub-menu');
+    document.getElementsByClassName('details')[index].classList.toggle('details-active');
   }
 
   toggleMenu(index: number): void{
-    console.log("asd")
-    let openedMenus = document.getElementsByClassName('openMenu');
-    let openedSubMenus = document.getElementsByClassName('openSubMenu');
-    let openedDetailsMenu = document.getElementsByClassName('detailsActive');
+    let openedMenus = document.getElementsByClassName('open-menu');
+    let openedSubMenus = document.getElementsByClassName('open-sub-menu');
+    let openedDetailsMenu = document.getElementsByClassName('details-active');
     if (openedMenus.length > 0 ) {
-      document.getElementsByClassName('menuActive')[0].classList.remove('menuActive');
-      document.getElementsByClassName('openMenu')[0].classList.remove('openMenu');
+      document.getElementsByClassName('menu-active')[0].classList.remove('menu-active');
+      document.getElementsByClassName('open-menu')[0].classList.remove('open-menu');
     }
     
     
-    document.getElementsByClassName('dropdown-menu')[index].classList.toggle('openMenu');
-    document.getElementsByClassName('newExercise')[index].classList.toggle('menuActive');
+    document.getElementsByClassName('dropdown-menu')[index].classList.toggle('open-menu');
+    document.getElementsByClassName('new-exercise')[index].classList.toggle('menu-active');
   }
 
   toggleSubMenu(index: number, subMenu: string) {
-    let openedSubMenus = document.getElementsByClassName('openSubMenu')
+    let openedSubMenus = document.getElementsByClassName('open-sub-menu')
     if (openedSubMenus.length > 0 ) {
-      document.getElementsByClassName('subMenuActive')[0].classList.remove('subMenuActive');
-      document.getElementsByClassName('openSubMenu')[0].classList.remove('openSubMenu');
+      document.getElementsByClassName('sub-menu-active')[0].classList.remove('sub-menu-active');
+      document.getElementsByClassName('open-sub-menu')[0].classList.remove('open-sub-menu');
     }
-    document.getElementsByClassName(subMenu)[index].classList.toggle('openSubMenu');
+    document.getElementsByClassName(subMenu)[index].classList.toggle('open-sub-menu');
     switch(subMenu) {
       case "submenu-arms": {
-        document.getElementsByClassName('bodypart')[index * 6 + 0].classList.toggle('subMenuActive');
+        document.getElementsByClassName('bodypart')[index * 6 + 0].classList.toggle('sub-menu-active');
         break;
       }
       case "submenu-shoulders": {
-        document.getElementsByClassName('bodypart')[index * 6 + 1].classList.toggle('subMenuActive');
+        document.getElementsByClassName('bodypart')[index * 6 + 1].classList.toggle('sub-menu-active');
         break;
       }
       case "submenu-chest": {
-        document.getElementsByClassName('bodypart')[index * 6 + 2].classList.toggle('subMenuActive');
+        document.getElementsByClassName('bodypart')[index * 6 + 2].classList.toggle('sub-menu-active');
         break;
       }
       case "submenu-back": {
-        document.getElementsByClassName('bodypart')[index * 6 + 3].classList.toggle('subMenuActive');
+        document.getElementsByClassName('bodypart')[index * 6 + 3].classList.toggle('sub-menu-active');
         break;
       }
       case "submenu-core": {
-        document.getElementsByClassName('bodypart')[index * 6 + 4].classList.toggle('subMenuActive');
+        document.getElementsByClassName('bodypart')[index * 6 + 4].classList.toggle('sub-menu-active');
         break;
       }
       case "submenu-lowerbody": {
-        document.getElementsByClassName('bodypart')[index * 6 + 5].classList.toggle('subMenuActive');
+        document.getElementsByClassName('bodypart')[index * 6 + 5].classList.toggle('sub-menu-active');
         break;
       }
     }

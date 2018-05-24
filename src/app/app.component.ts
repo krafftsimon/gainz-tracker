@@ -1,6 +1,7 @@
 import { Component, HostListener, ViewChild, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router, Event , NavigationEnd } from '@angular/router';
 
 import { slideInModalContentAnimation } from './animations/slide-in-modal-content.animation';
 import { slideModalFormAnimation } from './animations/slide-modal-form.animation';
@@ -25,8 +26,15 @@ export class AppComponent implements OnInit {
   myLoginForm: FormGroup;
   myRegisterForm: FormGroup;
   errorMsg: string = '';
+  loginHintActive: boolean = false;
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService, private router: Router) {
+    router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        this.updateLoginHintVisibility();
+      }
+    });
+  }
 
   @HostListener('document:click', ['$event'])
   onClick(event) {
@@ -65,6 +73,20 @@ export class AppComponent implements OnInit {
     })
   }
 
+  updateLoginHintVisibility(): void {
+    if (!this.authService.isLoggedIn() && this.router.url === '/track-progress') {
+      setTimeout(() => {
+        this.loginHintActive = true;
+      }, 3000);
+    } else {
+      this.loginHintActive = false;
+    }
+  }
+
+  closeHint(): void {
+    this.loginHintActive = false;
+  }
+  
   onSubmitLogin(): void {
     const user = new User(
       this.myLoginForm.value.username,

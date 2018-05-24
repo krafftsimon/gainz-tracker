@@ -8,7 +8,6 @@
   display: flex;
   align-items: center;
   border-right: 1px solid grey;
-  background: var(--background-color);
 }
 
 .home-right {
@@ -16,12 +15,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: var(--background-color);
 }
 
 .home-title-container {
-  max-width: 70%;
+  max-width: 800px;
   margin: 0 auto;
+  padding: 0 30px;
 }
 
 .home-title {
@@ -80,7 +79,6 @@
   border: 3px solid var(--main-color);
   display: flex;
   width: 500px;
-  height: 100px;
   border-radius: 15px;
   font-size: 30px;
   font-family: 'nunito';
@@ -136,17 +134,74 @@ fa {
   flex-grow: 1;
 }
 
-@media only screen and (max-width: 1083px) {
-  .box-container {
-      margin-top: 10vh;
+@media only screen and (max-width: 1460px) {
+  .home-background {
+    flex-wrap: wrap;
+  }
+
+  .home-left {
+    width: 100%;
+    border: none;
+  }
+
+  .home-right {
+    width: 100%;
+  }
+  
+  .home-title-container {
+    text-align: center;
+  }
+
+  .login-btn {
+    display: none;
+  }
+
+  .register-btn {
+    display: none;
   }
 }
 
-@media only screen and (max-width: 739px) {
-  .box {
-    min-width: 80%;
+@media only screen and (max-width: 730px) {
+  .home-title {
+    font-size: 70px;
+    margin-top: 100px;
   }
-  .box-container {
-      margin-top: 0;
+  
+  .home-subtitle {
+    font-size: 25px;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .home-title {
+    font-size: 50px;
+    margin-top: 100px;
+  }
+  
+  .home-subtitle {
+    font-size: 20px;
+  }
+
+  .box {
+    width: 400px;
+    font-size: 25px;
+    margin: 20px auto 20px auto;
+  }
+
+  fa {
+    margin-right: 20px;
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .box {
+    width: 350px;
+    font-size: 20px;
+    padding: 20px;
+  }
+
+  .home-title-container {
+    padding: 0 20px;
   }
 }

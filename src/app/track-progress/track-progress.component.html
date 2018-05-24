@@ -1,13 +1,12 @@
-<p *ngIf="!loggedIn" class="speech"> Login to save progress </p>
 <div class="newday" (click)="addNewDay()"> <fa name="plus"></fa>Add a new day</div>
 <div *ngFor="let day of days; let i = index" class="day" [@dayListAnimation]="''">
   <h3> {{day.date | date}} </h3>
-  <div class="deleteDay" (click)="deleteDay(i)"><fa name="times"></fa></div>
-  <div *ngFor="let exercise of days[i].exercises; let j = index" class="addedExercises" [@exerciseListAnimation]="''">
-    <div class="deleteExercise" (click)="deleteExercise(i, j)"><fa name="times"></fa></div>
+  <div class="delete-day" (click)="deleteDay(i)"><fa name="times"></fa></div>
+  <div *ngFor="let exercise of days[i].exercises; let j = index" class="added-exercises" [@exerciseListAnimation]="''">
+    <div class="delete-exercise" (click)="deleteExercise(i, j)"><fa name="times"></fa></div>
      {{exercise.name}}: <span>{{exercise.sets}}</span> set(s) of <span>{{exercise.reps}}</span> rep(s) at <span>{{exercise.weight}}</span> lbs
   </div>
-  <div class="newExercise" (click)="toggleMenu(i)">
+  <div class="new-exercise" (click)="toggleMenu(i)">
     <fa name="bars" class="dropdown-icon"></fa>
     Add new exercise
     <div class="dropdown-menu" [@dropdownMenuAnimation]="''">
@@ -71,7 +70,7 @@
   </div>
   <div class="details">
     <form>
-      <div class="closeDetails" (click)="closeDetailsMenu()"> <fa name="times"></fa> </div>
+      <div class="close-details" (click)="closeDetailsMenu()"> <fa name="times"></fa> </div>
       <h3>New Exercise</h3>
       <div class="form-group">
         <label> Number of sets </label>
