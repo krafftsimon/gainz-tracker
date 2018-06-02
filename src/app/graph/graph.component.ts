@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 import { fadeInRouterAnimation } from './../animations/fade-in-router.animation';
 import { fadeInErrorAnimation } from './../animations/fade-in-error.animation';
@@ -42,7 +42,8 @@ export class GraphComponent implements OnInit {
           zeroLineColor: 'rgba(255, 255, 255, 1)'
         },
         ticks: {
-          fontColor: '#ededed'
+          fontColor: '#ededed',
+          fontSize: 20,
         }
       }],
       yAxes: [{
@@ -53,7 +54,8 @@ export class GraphComponent implements OnInit {
           zeroLineColor: 'rgba(255, 255, 255, 1)'
         },
         ticks: {
-          fontColor: '#ededed'
+          fontColor: '#ededed',
+          fontSize: 20,
         }
       }]
     }
@@ -61,12 +63,14 @@ export class GraphComponent implements OnInit {
 
   public lineChartColors:Array<any> = [
     { // grey
-      backgroundColor: 'rgba(19, 73, 81, 0.2)',
-      borderColor: 'rgba(59, 168, 204, 1)',
+      backgroundColor: 'rgba(38,41,99,0.5)',
+      borderColor: '#ff0048',
       pointBackgroundColor: 'rgba(255,255,255,1)',
       pointBorderColor: '#fff',
+      pointRadius: 5,
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)',
+      pointHoverRadius: 10,
     }
   ];
   public lineChartLegend:boolean = false;

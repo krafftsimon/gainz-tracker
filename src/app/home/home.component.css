@@ -27,6 +27,7 @@
   font-size: 110px;
   color: #FF991D;
   margin-bottom: 30px;
+  margin-top: 0;
 }
 
 .home-subtitle {
@@ -53,7 +54,7 @@
   background: linear-gradient(to left, var(--main-color), var(--tertiary-color) 120%);
 }
 
-.login-btn {
+.login-btn, .logout-btn {
   width: 150px;
   padding: 10px;
   color: var(--main-color);
@@ -69,14 +70,13 @@
   transition: color 0.2s, background-color 0.2s;
 }
 
-.login-btn:hover {
+.login-btn:hover, .logout-btn:hover {
   background-color: var(--main-color);
   color: white;
 }
 
 .box {
   cursor: pointer;
-  border: 3px solid var(--main-color);
   display: flex;
   width: 500px;
   border-radius: 15px;
@@ -85,16 +85,10 @@
   color: white;
   margin: 30px auto 30px auto;
   padding: 20px;
-  box-sizing: border-box;
   align-items: center;
   position: relative;
   background: linear-gradient(to right, var(--main-color) -20%, var(--tertiary-color) 140%);
   background-clip: padding-box;
-  transition: border 0.2s ease-in-out;
-}
-
-.box:hover {
-  border: 3px solid rgba(0,0,0,0);
 }
 
 .box-helper {
@@ -107,10 +101,11 @@
   border-radius: 12px;
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 17px;
   box-sizing: border-box;
   background-color: var(--background-color);
   color: white;
+  border: 3px solid var(--main-color);
 }
 
 .box-helper:hover {
@@ -196,7 +191,7 @@ fa {
 
 @media only screen and (max-width: 430px) {
   .box {
-    width: 350px;
+    width: 300px;
     font-size: 20px;
     padding: 20px;
   }

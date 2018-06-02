@@ -73,15 +73,15 @@
       <div class="close-details" (click)="closeDetailsMenu()"> <fa name="times"></fa> </div>
       <h3>New Exercise</h3>
       <div class="form-group">
-        <label> Number of sets </label>
+        <label> Sets </label>
         <input type="number" placeholder="Sets" #sets>
       </div>
       <div class="form-group">
-        <label> Repetitions per set </label>
+        <label> Repetitions </label>
         <input type="number" placeholder="Reps" #reps>
       </div>
       <div class="form-group">
-        <label> Weight lifted </label>
+        <label> Weight </label>
         <input type="number" placeholder="Weight" #weight>
       </div>
       <button class="submit" (click)="submitDetails(i, sets, reps, weight)"> Submit </button>

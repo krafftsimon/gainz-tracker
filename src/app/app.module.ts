@@ -14,6 +14,7 @@ import { ProgramGeneratorComponent } from './program-generator/program-generator
 import { TrackProgressComponent } from './track-progress/track-progress.component';
 import { AppRoutingModule } from './app-routing.module';
 import { GraphComponent } from './graph/graph.component';
+import { HeaderComponent } from './header/header.component';
 
 import { DayService } from './services/day.service';
 import { AuthService } from './services/auth.service';
@@ -24,7 +25,8 @@ import { AuthService } from './services/auth.service';
     HomeComponent,
     ProgramGeneratorComponent,
     TrackProgressComponent,
-    GraphComponent
+    GraphComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

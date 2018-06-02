@@ -1,78 +1,118 @@
 .container {
   width: 100%;
-  min-height: 600px;
-  margin: 0 auto;
-  text-align: center;
+  margin-top: 200px;
 }
 
 .graph {
-  width: 65%;
-  margin: 20px auto;
+  margin: 30px auto;;
+  max-width: 1200px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 20px 120px -10px rgba(0, 0, 0, 0.8);
+  background-color: #0c1a33;
 }
 
-.graph-buttons {
-  color: white;
-  background-color: rgba(19, 73, 81, 1);
+.select-exercise {
+  font-size: 24px;
+  color: var(--main-color);
+  padding: 20px;
+  margin: 0 20px;
+  font-weight: 600;
+}
+
+.graph-btn {
+  color: var(--main-color);
   display: inline-block;
-  width: 120px;
   text-align: center;
   font-family: 'nunito';
-  padding: 20px;
-  flex: 1 1 auto;
-  border: 1px solid black;
-  border-right: none;
-  transition: all .17s ease-in-out;
-  box-shadow: 2px 12px 5px 0 rgba(0, 0, 0, 0.5);
+  padding: 20px 20px;
+  cursor: pointer;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  -webkit-tap-highlight-color: transparent;
+  flex-grow: 1;
+  flex-basis: 0;
+  flex-shrink: 0;
+  
 }
 
-.graph-buttons:hover {
-  transform: translateY(7px);
-  box-shadow: none;
+.graph-btn:hover {
+  background: linear-gradient(to right, var(--main-color), var(--tertiary-color) 120%);
 }
 
-.graph-buttons:active {
-  background-color: rgba(09, 53, 61, 1);
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5) inset;
+.graph-btn:first-child:hover {
+  border-radius: 7px 0 0 7px;
 }
 
-.graph-buttons:focus {
-  background-color: #496b19;
-  border: 1px solid #000000;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5) inset;
+.graph-btn:last-child:hover {
+  border-radius: 0 7px 7px 0;
 }
 
-.buttons-container {
-  margin: 40px auto;
-  max-width: 800px;
+.graph-btn:focus {
+  background: linear-gradient(to right, var(--main-color), var(--tertiary-color) 120%);
+  outline: none;
+}
+
+.graph-btn:first-child:focus {
+  border-radius: 7px 0 0 7px;
+}
+
+.graph-btn:last-child:focus {
+  border-radius: 0 7px 7px 0;
+}
+
+.btn-container {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  max-width: 800px;
+  border: 2px solid var(--main-color);
+  border-radius: 10px;
+  margin: 0 auto 40px auto;
 }
 
 .data-error {
   background-color: #f7554a;
   left: 40%;
   color: white;
-  width: 300px;
+  width: 315px;
   padding: 10px;
   margin: 0 auto;
   border-radius: 5px;
   font-family: 'nunito';
-  font-size: 14px;
+  font-size: 16px;
 }
 
-@media only screen and (max-width: 664px) {
-  .graph-buttons {
-    box-shadow: none;
-    border-top: none;
+@media only screen and (max-width: 700px) {
+  .graph-btn {
+    min-width: 250px;
+    font-size: 18px;
   }
 
-  .graph-buttons:hover {
-    transform: none;
-    background-color: rgba(24, 94, 104, 1);
+  .btn-container {
+    margin: 0 10px 40px 10px;
   }
 
-  .graph-buttons:active {
-    background-color: rgba(09, 53, 61, 1);
+  .graph-btn:first-child:hover {
+    border-radius: 8px 0 0 0;
+  }
+  
+  .graph-btn:nth-child(2):hover {
+    border-radius: 0 8px 0 0;
+  }
+
+  .graph-btn:nth-child(3):hover {
+    border-radius: 0 0 0 8px;
+  }
+
+  .graph-btn:last-child:hover {
+    border-radius: 0 0 8px 0;
+  }
+}
+
+@media only screen and (max-width: 525px) {
+  .graph-btn {
+    min-width: 170px;
   }
 }

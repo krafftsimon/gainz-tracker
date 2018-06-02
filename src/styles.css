@@ -8,7 +8,10 @@ html {
   --tertiary-color: #ff0048;
   --background-color: #09111F;
   font-family: 'Nunito';
-  background-color: var(--background-color);
+  background: rgb(9,17,31);
+  background: linear-gradient(176deg, rgba(9,17,31,1) 0%, rgba(11,22,42,1) 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 body {
