@@ -16,7 +16,6 @@ import { DayService } from './../services/day.service';
 })
 
 export class GraphComponent implements OnInit {
-
   days: Day[] = [];
   notEnoughDataErr: boolean = false;
   benchArray: { rm: number, date: Date }[] = [];
@@ -25,43 +24,47 @@ export class GraphComponent implements OnInit {
   ohpArray: { rm: number, date: Date }[] = [];
   month: string[] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+  innerWidth: any;
 
   // lineChart
-  public lineChartData:Array<any> = [
+  lineChartData:Array<any> = [
     {data: [40, 41, 42, 43, 44, 45, 46], label: 'Bench'}
   ];
-  public lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public lineChartOptions: any = {
+  lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  lineChartOptions: any = {
     responsive: true,
     scales: {
-      xAxes: [{
-        gridLines: {
-          lineWidth: 1,
-          color: 'rgba(200, 200, 200, 0.5)',
-          zeroLineWidth: 2,
-          zeroLineColor: 'rgba(255, 255, 255, 1)'
-        },
-        ticks: {
-          fontColor: '#ededed',
-          fontSize: 20,
+      xAxes: [
+        {
+          gridLines: {
+            lineWidth: 1,
+            color: 'rgba(200, 200, 200, 0.5)',
+            zeroLineWidth: 2,
+            zeroLineColor: 'rgba(255, 255, 255, 1)'
+          },
+          ticks: {
+            fontColor: '#ededed',
+            fontSize: window.innerWidth > 600 ? 20 : 12,
+          }
         }
-      }],
-      yAxes: [{
-        gridLines: {
-          lineWidth: 1,
-          color: 'rgba(200, 200, 200, 0.5)',
-          zeroLineWidth: 2,
-          zeroLineColor: 'rgba(255, 255, 255, 1)'
-        },
-        ticks: {
-          fontColor: '#ededed',
-          fontSize: 20,
+      ],
+      yAxes: [
+        {
+          gridLines: {
+            lineWidth: 1,
+            color: 'rgba(200, 200, 200, 0.5)',
+            zeroLineWidth: 2,
+            zeroLineColor: 'rgba(255, 255, 255, 1)'
+          },
+          ticks: {
+            fontColor: '#ededed',
+            fontSize: window.innerWidth > 600 ? 20 : 12,
+          }
         }
-      }]
+      ]
     }
   };
-
-  public lineChartColors:Array<any> = [
+  lineChartColors:Array<any> = [
     { // grey
       backgroundColor: 'rgba(38,41,99,0.5)',
       borderColor: '#ff0048',
@@ -73,10 +76,11 @@ export class GraphComponent implements OnInit {
       pointHoverRadius: 10,
     }
   ];
-  public lineChartLegend:boolean = false;
-  public lineChartType:string = 'line';
+  lineChartLegend:boolean = false;
+  lineChartType:string = 'line';
 
-  constructor(private dayService: DayService) {}
+  constructor(private dayService: DayService) {
+  }
 
   ngOnInit() {
     this.dayService.getDays().subscribe(

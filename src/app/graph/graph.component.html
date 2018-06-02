@@ -5,8 +5,13 @@
     <button class="graph-btn" (click)="generateGraph('Deadlift')"> Deadlift </button>
     <button class="graph-btn" (click)="generateGraph('Overhead Press')"> Overhead Press </button>
   </div>
-  <div *ngIf="notEnoughDataErr" class="data-error" [@fadeInErrorAnimation]="''"> Error! Not enough data to generate a graph. </div>
   <div class="graph">
+    <div 
+      *ngIf="notEnoughDataErr" 
+      class="data-error" 
+      [@fadeInErrorAnimation]="''"> 
+        <fa name="exclamation-circle"></fa>
+        Error! Not enough data to generate a graph. </div>
     <canvas baseChart
             [datasets]="lineChartData"
             [labels]="lineChartLabels"

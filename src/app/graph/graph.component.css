@@ -4,7 +4,7 @@
 }
 
 .graph {
-  margin: 30px auto;;
+  margin: 0 auto;;
   max-width: 1200px;
   padding: 30px;
   border-radius: 10px;
@@ -25,7 +25,7 @@
   display: inline-block;
   text-align: center;
   font-family: 'nunito';
-  padding: 20px 20px;
+  padding: 20px;
   cursor: pointer;
   font-size: 20px;
   background-color: transparent;
@@ -35,53 +35,47 @@
   flex-grow: 1;
   flex-basis: 0;
   flex-shrink: 0;
-  
+  box-sizing: border-box;
 }
 
 .graph-btn:hover {
-  background: linear-gradient(to right, var(--main-color), var(--tertiary-color) 120%);
-}
-
-.graph-btn:first-child:hover {
-  border-radius: 7px 0 0 7px;
-}
-
-.graph-btn:last-child:hover {
-  border-radius: 0 7px 7px 0;
+  border-bottom: 4px solid var(--main-color);
+  padding: 20px 20px 16px 20px;
+  /*background: linear-gradient(to right, var(--main-color), var(--tertiary-color) 120%);*/
 }
 
 .graph-btn:focus {
-  background: linear-gradient(to right, var(--main-color), var(--tertiary-color) 120%);
+  border-bottom: 4px solid var(--main-color);
+  padding: 20px 20px 16px 20px;
   outline: none;
-}
-
-.graph-btn:first-child:focus {
-  border-radius: 7px 0 0 7px;
-}
-
-.graph-btn:last-child:focus {
-  border-radius: 0 7px 7px 0;
 }
 
 .btn-container {
   display: flex;
   flex-wrap: wrap;
   max-width: 800px;
-  border: 2px solid var(--main-color);
-  border-radius: 10px;
-  margin: 0 auto 40px auto;
+  border-radius: 10px 10px 0 0;
+  margin: 0 auto 0 auto;
+  background-color: #0c1a33;
+  z-index: 10;
+  position: relative;
 }
 
 .data-error {
-  background-color: #f7554a;
-  left: 40%;
-  color: white;
-  width: 315px;
+  color: #ef0909;
   padding: 10px;
-  margin: 0 auto;
+  margin: 0 0 10px 40px;
   border-radius: 5px;
   font-family: 'nunito';
-  font-size: 16px;
+  font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 900px) {
+  .graph {
+    padding: 30px 0;
+  }
 }
 
 @media only screen and (max-width: 700px) {
@@ -89,30 +83,16 @@
     min-width: 250px;
     font-size: 18px;
   }
-
-  .btn-container {
-    margin: 0 10px 40px 10px;
-  }
-
-  .graph-btn:first-child:hover {
-    border-radius: 8px 0 0 0;
-  }
-  
-  .graph-btn:nth-child(2):hover {
-    border-radius: 0 8px 0 0;
-  }
-
-  .graph-btn:nth-child(3):hover {
-    border-radius: 0 0 0 8px;
-  }
-
-  .graph-btn:last-child:hover {
-    border-radius: 0 0 8px 0;
-  }
 }
 
 @media only screen and (max-width: 525px) {
   .graph-btn {
     min-width: 170px;
+  }
+
+  .data-error{
+    margin: 0 0 10px 0;
+    font-size: 16px;
+
   }
 }
