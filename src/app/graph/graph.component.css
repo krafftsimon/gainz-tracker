@@ -1,15 +1,24 @@
-.container {
-  width: 100%;
-  margin-top: 200px;
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+  margin-top: 100px;
 }
 
-.graph {
-  margin: 0 auto;;
-  max-width: 1200px;
-  padding: 30px;
+.container {
+  padding: 1px 30px 30px 30px;
   border-radius: 10px;
   box-shadow: 0 20px 120px -10px rgba(0, 0, 0, 0.8);
   background-color: #0c1a33;
+  flex: 1 1 auto;
+  max-width: 1200px;
+  min-width: 0;
+}
+
+.graph {
+  min-height: 400px;
+  height: 50vh;
 }
 
 .select-exercise {
@@ -22,13 +31,12 @@
 
 .graph-btn {
   color: var(--main-color);
-  display: inline-block;
   text-align: center;
-  font-family: 'nunito';
+  font-family: 'Nunito';
   padding: 20px;
   cursor: pointer;
   font-size: 20px;
-  background-color: transparent;
+  background: linear-gradient(to right, var(--main-color), var(--tertiary-color) 120%);
   border: none;
   color: white;
   -webkit-tap-highlight-color: transparent;
@@ -36,26 +44,53 @@
   flex-basis: 0;
   flex-shrink: 0;
   box-sizing: border-box;
-}
-
-.graph-btn:hover {
-  border-bottom: 4px solid var(--main-color);
-  padding: 20px 20px 16px 20px;
-  /*background: linear-gradient(to right, var(--main-color), var(--tertiary-color) 120%);*/
+  border-radius: 10px;
+  position: relative;
 }
 
 .graph-btn:focus {
   border-bottom: 4px solid var(--main-color);
   padding: 20px 20px 16px 20px;
   outline: none;
+  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.8) inset;
+}
+
+.graph-btn-helper {
+  color: var(--main-color);
+  text-align: center;
+  font-family: 'Nunito';
+  padding: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  border-radius: 8px;
+  position: absolute;
+  background-color: #0c1a33;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.2s;
+}
+
+.graph-btn-helper:hover {
+  opacity: 0;
+}
+
+.graph-btn-helper:focus {
+  outline: none;
+  opacity: 0;
 }
 
 .btn-container {
   display: flex;
   flex-wrap: wrap;
-  max-width: 800px;
   border-radius: 10px 10px 0 0;
-  margin: 0 auto 0 auto;
+  margin: 20px auto 40px auto;
   background-color: #0c1a33;
   z-index: 10;
   position: relative;
@@ -63,8 +98,7 @@
 
 .data-error {
   color: #ef0909;
-  padding: 10px;
-  margin: 0 0 10px 40px;
+  margin: 0 0 20px 40px;
   border-radius: 5px;
   font-family: 'nunito';
   font-size: 18px;
@@ -73,8 +107,8 @@
 }
 
 @media only screen and (max-width: 900px) {
-  .graph {
-    padding: 30px 0;
+  .container {
+    padding: 1px 5px 30px 5px;
   }
 }
 
@@ -82,6 +116,19 @@
   .graph-btn {
     min-width: 250px;
     font-size: 18px;
+  }
+
+  .graph-btn-helper {
+    font-size: 18px;
+  }
+
+  .btn-container {
+    outline: 1px solid #293470;
+  }
+
+  .container {
+    background: none;
+    box-shadow: none;
   }
 }
 

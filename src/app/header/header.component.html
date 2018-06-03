@@ -5,6 +5,7 @@
     Home
   </button>
   <div class="flex-spacer"></div>
+  <div class="welcome-msg" *ngIf="isLoggedIn()"> Welcome, {{curUser}} </div>
   <div class="login-btn-wrapper">
     <button class="login-btn" (click)="onLogin()" *ngIf="!isLoggedIn()">
       Log in
@@ -45,7 +46,7 @@
         </label>
         <input class="auth-input" type="password" id="password" formControlName="password">
       </div>
-      <span [style.display]="isErrorMsgActive()" class="errormsg">
+      <span *ngIf="errorMsgActive" class="errormsg">
         <fa name="exclamation-circle"></fa> 
         {{errorMsg}} 
       </span>

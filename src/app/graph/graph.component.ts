@@ -24,7 +24,6 @@ export class GraphComponent implements OnInit {
   ohpArray: { rm: number, date: Date }[] = [];
   month: string[] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
-  innerWidth: any;
 
   // lineChart
   lineChartData:Array<any> = [
@@ -33,6 +32,7 @@ export class GraphComponent implements OnInit {
   lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   lineChartOptions: any = {
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       xAxes: [
         {

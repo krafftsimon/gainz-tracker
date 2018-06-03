@@ -1,24 +1,49 @@
-<div class="container">
-  <div class="btn-container">
-    <button class="graph-btn" (click)="generateGraph('Bench Press')"> Bench Press </button>
-    <button class="graph-btn" (click)="generateGraph('Squat')"> Squat </button>
-    <button class="graph-btn" (click)="generateGraph('Deadlift')"> Deadlift </button>
-    <button class="graph-btn" (click)="generateGraph('Overhead Press')"> Overhead Press </button>
-  </div>
-  <div class="graph">
+<div class="page-wrapper">
+  <div class="container">
+    <div class="btn-container">
+      <button class="graph-btn" (click)="generateGraph('Bench Press')"> 
+        Bench Press 
+        <button class="graph-btn-helper">
+          Bench Press
+        </button>
+      </button>
+      <button class="graph-btn" (click)="generateGraph('Squat')"> 
+        Squat 
+        <button class="graph-btn-helper">
+          Squat
+        </button>
+      </button>
+      <button class="graph-btn" (click)="generateGraph('Deadlift')"> 
+        Deadlift 
+        <button class="graph-btn-helper">
+          Deadlift
+        </button>
+      </button>
+      <button class="graph-btn" (click)="generateGraph('Overhead Press')"> 
+        Overhead Press
+        <button class="graph-btn-helper">
+          Overhead Press
+        </button> 
+      </button>
+    </div>
     <div 
       *ngIf="notEnoughDataErr" 
       class="data-error" 
       [@fadeInErrorAnimation]="''"> 
         <fa name="exclamation-circle"></fa>
-        Error! Not enough data to generate a graph. </div>
-    <canvas baseChart
-            [datasets]="lineChartData"
-            [labels]="lineChartLabels"
-            [options]="lineChartOptions"
-            [colors]="lineChartColors"
-            [legend]="lineChartLegend"
-            [chartType]="lineChartType">
-    </canvas>
+        Error! Not enough data to generate a graph. 
+    </div>
+    <div class="graph">
+      <canvas 
+        baseChart
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [colors]="lineChartColors"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType">
+      </canvas>
+    </div>
   </div>
 </div>
+

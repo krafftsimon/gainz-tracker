@@ -17,17 +17,30 @@ mongoose.connect(db.database(), {useMongoClient: true}, function(err) {
 
 router.get('/users', function(req, res) {
   User.findOne({username: 'sim2'})
-      .exec(function(err, users) {
-        if (err) {
-          console.log('Error getting the users');
-        } else {
-          res.json(users);
-          console.log(users);
-        }
-      });
+  .exec(function(err, users) {
+    if (err) {
+      console.log('Error getting the users');
+    } else {
+      res.json(users);
+    }
+  });
 });
 
-
+router.get('/users/currentUser', function(req, res) {
+  var decoded = jwt.decode(req.query.token);
+  User.findById(decoded.user._id, function (err, user) {
+    if (err) {
+      return res.status(500).json({
+          title: 'An error occurred',
+          error: err
+      });
+    }
+    res.status(201).json({
+      message: 'Username fetched Successfully.',
+      obj: user.username,
+    });
+  });
+});
 
 router.post('/users/register', function (req, res, next) {
   var user = new User({

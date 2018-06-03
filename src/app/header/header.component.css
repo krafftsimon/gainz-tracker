@@ -83,6 +83,13 @@
   outline: none;
 }
 
+.welcome-msg {
+  color: var(--main-color);
+  flex: 0 0 auto;
+  font-size: 20px;
+  overflow: hidden;
+}
+
 .speech {
   top: 50px;
   right: -30px;
@@ -224,7 +231,9 @@ input.ng-invalid.ng-touched {
 
 .errormsg {
   color: #ff2828;
-  font-size: 13px;
+  font-size: 16px;
+  text-align: center;
+  display: block;
 }
 
 @media only screen and (max-width: 1460px) {
@@ -235,7 +244,8 @@ input.ng-invalid.ng-touched {
 
 @media only screen and (max-width: 540px) {
   .header {
-    padding: 0 20px;
+    padding: 0 10px;
+    margin-top: 10px;
   }
 
   .back-home-btn {
@@ -255,6 +265,12 @@ input.ng-invalid.ng-touched {
   .logout-btn {
     font-size: 18px;
     padding: 10px 10px;
+    margin-left: 10px;
+  }
+
+  .welcome-msg {
+    width: 100px;
+    font-size: 16px;
   }
 
   .speech {

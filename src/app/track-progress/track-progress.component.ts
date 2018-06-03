@@ -102,20 +102,25 @@ export class TrackProgressComponent implements OnInit {
   submitDetails(index: number, sets: HTMLInputElement, reps: HTMLInputElement, weight: HTMLInputElement): void {
     if (sets.value !== '' && reps.value !== '' && weight.value !== '') {
       if (this.authService.isLoggedIn()) {
-        this.dayService.addExercise(index,
-                                    this.exerciseToBeAdded,
-                                    Number(sets.value),
-                                    Number(reps.value),
-                                    Number(weight.value))
-                        .subscribe(
-                          data => console.log(data.message),
-                          error => console.error(error)
-                        );
+        this.dayService.addExercise(
+          index,
+          this.exerciseToBeAdded,
+          Number(sets.value),
+          Number(reps.value),
+          Number(weight.value)
+        )
+        .subscribe(
+          data => console.log(data.message),
+          error => console.error(error)
+        );
       } else {
-        this.days[index].exercises.push(new Exercise(this.exerciseToBeAdded,
-                                                     Number(sets.value),
-                                                     Number(reps.value),
-                                                     Number(weight.value)));
+        let newExercise = new Exercise(
+          this.exerciseToBeAdded,
+          Number(sets.value),
+          Number(reps.value),
+          Number(weight.value)
+        );
+        this.days[index].exercises.push(newExercise);
       }
       document.getElementsByClassName('details')[index].classList.remove('details-active');
       sets.value = null;

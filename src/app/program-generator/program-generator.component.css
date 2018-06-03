@@ -9,7 +9,7 @@
   border-radius: 10px;
   color: white;
   padding: 20px;
-  margin: 0 20px;
+  margin: 0 20px 20px 20px;
   background-color: #0c1a33;
   box-shadow: 5px 5px 60px -10px rgba(0, 0, 0, 1);
 }
@@ -19,7 +19,7 @@
   border-radius: 10px;
   color: white;
   padding: 20px;
-  margin: 0 20px;
+  margin: 0 20px 20px 20px;
   background-color: #0c1a33;
   box-shadow: 5px 5px 60px -10px rgba(0, 0, 0, 1);
 }

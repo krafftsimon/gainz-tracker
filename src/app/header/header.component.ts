@@ -23,9 +23,11 @@ export class HeaderComponent implements OnInit {
   registerFormState: string = 'out-right';
   myLoginForm: FormGroup;
   myRegisterForm: FormGroup;
+  errorMsgActive: boolean = false;
   errorMsg: string = '';
   loginHintActive: boolean = false;
-  headerActive:boolean = false;
+  headerActive: boolean = false;
+  curUser: string;
 
   constructor(private authService: AuthService, private router: Router) {
     router.events.subscribe((event: Event) => {
@@ -36,7 +38,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  @HostListener('mouseup', ['$event'])
+  @HostListener('mousedown', ['$event'])
   onClick(event) {
     this.closeModal(event);
   }
@@ -63,6 +65,13 @@ export class HeaderComponent implements OnInit {
       username: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required)
     })
+    if (this.authService.isLoggedIn()) {
+      this.authService.getCurrentUser()
+      .subscribe(
+        data => this.curUser = data.obj,
+        error => console.error(error),
+      );
+    }
   }
 
   closeModal(event): void {
@@ -73,6 +82,7 @@ export class HeaderComponent implements OnInit {
         this.modalContentState = 'out';
         this.myRegisterForm.reset();
         this.myLoginForm.reset();
+        this.errorMsgActive = false;
       }
     }
   }
@@ -110,8 +120,9 @@ export class HeaderComponent implements OnInit {
       this.myLoginForm.reset();
       this.modalActive = false;
     }, error => {
+      this.errorMsgActive = true;
       console.error(error);
-      this.errorMsg = error.error.message;
+      this.errorMsg = error.error.error.message;
     });
   }
 
@@ -189,16 +200,9 @@ export class HeaderComponent implements OnInit {
     return q;
   }
 
-  isErrorMsgActive(): string {
-    if(this.errorMsg) {
-      return "inline";
-    } else {
-      return "none";
-    }
-  }
-
   toRegisterFromLogin(): void {
     this.loginFormState = 'out-left'; 
+    this.errorMsgActive = false;
     setTimeout(() => {
       this.registerFormActive = true; 
       this.loginFormActive = false; 
